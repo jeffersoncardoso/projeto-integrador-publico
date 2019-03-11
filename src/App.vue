@@ -14,7 +14,7 @@
       </b-collapse>
     </b-navbar> -->
 
-    <b-container fluid class="content">
+    <b-container fluid class="content" style="max-width:1200px">
       <!-- <h1>Bem vindo(a) Jefferson</h1> -->
 
       <router-view/>
@@ -30,7 +30,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+}
+
+h1,h2,h3,h4,h5 {
+  color: #015e6f;
 }
 
 .content {

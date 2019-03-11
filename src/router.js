@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Services from './views/Services.vue'
+import TrocaSenha from './views/services/TrocaSenha.vue'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/servicos',
       name: 'servicos',
       component: Services
+    },
+    {
+      path: '/servicos/troca-senha',
+      name: 'servicos',
+      component: TrocaSenha
     },
     {
       path: '/about',

@@ -13,11 +13,13 @@
     <br />
 
     <b-card-group deck>
-      <b-card v-for="service in filterServices">
+      <b-card v-for="service in filterServices" style="cursor:pointer">
+        <a :href="service.link">
         <b-card-text>
-          <fa :icon="service.icon" /> <br />
-          {{ service.name }}
+            <fa :icon="service.icon" /> <br />
+            {{ service.name }}
         </b-card-text>
+        </a>
       </b-card>
     </b-card-group>
   </div>
@@ -30,11 +32,11 @@ export default {
     return {
       name: '',
       services: [
-        {name: 'Troca de senha', icon: 'key'},
-        {name: 'Buscar servidores', icon: 'users'},
-        {name: 'Mural de avisos', icon: 'info'},
-        {name: 'Meus dados', icon: 'user'},
-        {name: 'Sistemas', icon: 'sitemap'}
+        { name: 'Troca de senha', icon: 'key', link: 'servicos/troca-senha' },
+        { name: 'Buscar servidores', icon: 'users', link: 'servicos/buscar-servidores' },
+        { name: 'Mural de avisos', icon: 'info', link: 'servicos/mural-avisos' },
+        { name: 'Meus dados', icon: 'user', link: 'servicos/meus-dados' },
+        { name: 'Sistemas', icon: 'sitemap', link: 'servicos/sistemas '}
       ]
     }
   },
@@ -52,6 +54,16 @@ export default {
 
 <style>
   .card-body {
-    padding: 0.50rem !important;
+    padding: 0.3rem !important;
+  }
+  .card {
+    background: #015e6f !important;
+    color: #FFF !important;
+  }
+  .card a {
+    color: #FFF !important;
+  }
+  .card a:hover {
+    text-decoration: none;
   }
 </style>
