@@ -8,19 +8,23 @@
 
     <br />
 
-    <b-input v-model="name" class="text-center" placeholder="Digite o nome..." size="lg"/>
+    <b-input v-model="name" class="text-center border" placeholder="Digite o nome..." size="lg"/>
 
     <br />
 
     <b-card-group deck>
-      <b-card v-for="service in filterServices" style="cursor:pointer">
-        <a :href="service.link">
-        <b-card-text>
-            <fa :icon="service.icon" /> <br />
-            {{ service.name }}
-        </b-card-text>
-        </a>
-      </b-card>
+      <b-row>
+        <b-col class="mt-3 col-auto" v-for="service in filterServices">
+          <b-card style="cursor:pointer; min-width:10em;">
+            <a :href="service.link">
+            <b-card-text>
+                <fa :icon="service.icon" /> <br />
+                <small>{{ service.name }}</small>
+            </b-card-text>
+            </a>
+          </b-card>
+        </b-col>
+      </b-row>
     </b-card-group>
   </div>
 </template>
@@ -32,11 +36,12 @@ export default {
     return {
       name: '',
       services: [
-        { name: 'Troca de senha', icon: 'key', link: 'servicos/troca-senha' },
-        { name: 'Buscar servidores', icon: 'users', link: 'servicos/buscar-servidores' },
-        { name: 'Mural de avisos', icon: 'info', link: 'servicos/mural-avisos' },
-        { name: 'Meus dados', icon: 'user', link: 'servicos/meus-dados' },
-        { name: 'Sistemas', icon: 'sitemap', link: 'servicos/sistemas '}
+        { name: 'Troca de senha', icon: 'key', link: 'troca-senha' },
+        { name: 'Buscar servidores', icon: 'users', link: 'buscar-servidores' },
+        { name: 'Mural de avisos', icon: 'info', link: 'mural-avisos' },
+        { name: 'Meus dados', icon: 'user', link: 'meus-dados' },
+        { name: 'Sistemas', icon: 'sitemap', link: 'sistemas '},
+        { name: 'Utilitários', icon: 'sitemap', link: 'utilitarios '}
       ]
     }
   },
@@ -54,14 +59,16 @@ export default {
 
 <style>
   .card-body {
-    padding: 0.3rem !important;
+    padding: 1.5rem !important;
   }
   .card {
-    background: #015e6f !important;
-    color: #FFF !important;
+    /* background: #015e6f !important;
+    color: #FFF !important; */
+    border-color: #2FA0AA !important;
   }
   .card a {
-    color: #FFF !important;
+    /* color: #FFF !important; */
+    color: #015e6f !important;
   }
   .card a:hover {
     text-decoration: none;

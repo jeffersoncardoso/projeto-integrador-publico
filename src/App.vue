@@ -14,7 +14,7 @@
       </b-collapse>
     </b-navbar> -->
 
-    <b-container fluid class="content" style="max-width:1200px">
+    <b-container fluid class="content" style="max-width:1300px">
       <!-- <h1>Bem vindo(a) Jefferson</h1> -->
 
       <router-view/>
