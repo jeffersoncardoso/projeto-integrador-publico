@@ -10,6 +10,7 @@
 
     <b-row align-v="center" align-h="center">
       <b-col>
+      
         <!-- <b-form @submit.prevent action="/servicos">  -->
         <b-form action="/servicos">
           <label for="usuario">Usuário</label>
