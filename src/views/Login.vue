@@ -1,31 +1,21 @@
 <template>
   <div class="login">
-    <b-row align-v="start" align-h="center">
-      <b-col>
+    <v-layout>
+      <v-flex>
         <fa icon="users" size="10x" color="#006b85" />
-      </b-col>
-    </b-row>
+      </v-flex>
+    </v-layout>
 
-    <br />
+    <v-layout>
+      <v-flex>
+          <v-text-field label="Usuário" required></v-text-field>
+          <v-text-field type="password" label="Senha" required></v-text-field>
 
-    <b-row align-v="center" align-h="center">
-      <b-col>
-        <!-- <b-form @submit.prevent action="/servicos">  -->
-        <b-form action="/servicos">
-          <label for="usuario">Usuário</label>
-          <b-input id="usuario" size="lg"/>
+          <v-btn color="info" href="/servicos">Entrar</v-btn>
+      </v-flex>
+    </v-layout>
 
-          <label for="senha">Senha</label>
-          <b-input type="password" id="senha" size="lg"/>
-
-          <br/>
-
-          <b-button type="submit" size="lg" variant="primary">Entrar</b-button>
-        </b-form>
-      </b-col>
-    </b-row>
-
-    <br /><br /><br />
+    <br /><br />
     <img width="200" alt="Prefeitura de Canoas" src="../assets/logo_canoas.png">
     <br />
     <img width="100" alt="CANOASTEC" src="../assets/logo_canoastec.png">
