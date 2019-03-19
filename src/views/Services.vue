@@ -1,27 +1,26 @@
 <template>
   <div class="services">
-    <h2>Bem-vindo(a) Jefferson</h2>
+    <h1>Bem-vindo(a) Jefferson</h1>
 
     <br />
 
-    <h3>Selecione o serviço desejado</h3>
+    <h2>Selecione o serviço desejado</h2>
 
     <br />
 
-    <b-input v-model="name" class="text-center" placeholder="Digite o nome..." size="lg"/>
+    <v-text-field v-model="name" placeholder="Digite o nome..."></v-text-field>
 
     <br />
 
-    <b-card-group deck>
-      <b-card v-for="service in filterServices" style="cursor:pointer">
-        <a :href="service.link">
-        <b-card-text>
-            <fa :icon="service.icon" /> <br />
-            {{ service.name }}
-        </b-card-text>
-        </a>
-      </b-card>
-    </b-card-group>
+    <v-layout row wrap>
+      <v-flex xs2 v-for="service in filterServices">
+        <v-card style="cursor:pointer" :href="service.link">
+            <v-card-text class="px-0">
+              <fa :icon="service.icon" /> <br> {{ service.name }}
+            </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
@@ -53,17 +52,4 @@ export default {
 </script>
 
 <style>
-  .card-body {
-    padding: 0.3rem !important;
-  }
-  .card {
-    background: #015e6f !important;
-    color: #FFF !important;
-  }
-  .card a {
-    color: #FFF !important;
-  }
-  .card a:hover {
-    text-decoration: none;
-  }
 </style>
