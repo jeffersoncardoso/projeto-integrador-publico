@@ -13,7 +13,7 @@
     <br />
 
     <v-layout row wrap>
-      <v-flex xs2 v-for="service in filterServices">
+      <v-flex md2 sm4 xs6 v-for="service in filterServices">
         <v-card style="cursor:pointer" :href="service.link">
             <v-card-text class="px-0">
               <fa :icon="service.icon" /> <br> {{ service.name }}
@@ -35,7 +35,8 @@ export default {
         { name: 'Buscar servidores', icon: 'users', link: 'servicos/buscar-servidores' },
         { name: 'Mural de avisos', icon: 'info', link: 'servicos/mural-avisos' },
         { name: 'Meus dados', icon: 'user', link: 'servicos/meus-dados' },
-        { name: 'Sistemas', icon: 'sitemap', link: 'servicos/sistemas '}
+        { name: 'Sistemas', icon: 'sitemap', link: 'servicos/sistemas '},
+        { name: 'Utilitários', icon: 'sitemap', link: 'servicos/utilitarios '}
       ]
     }
   },
