@@ -1,31 +1,32 @@
 <template>
   <div class="sistemas">
-    <h2>Bem-vindo(a) Jefferson</h2>
+    <h1>Bem-vindo(a) Jefferson</h1>
 
     <br />
 
-    <h3>Selecione o sistema desejado</h3>
+    <h2>Selecione o sistema desejado</h2>
 
     <br />
 
-    <b-input v-model="name" class="text-center" placeholder="Digite o nome..." size="lg"/>
+    <v-text-field v-model="name" placeholder="Digite o nome..."></v-text-field>
 
     <br />
 
-    <b-card-group deck>
-      <b-row>
-        <b-col class="mt-3 col-auto" v-for="sistema in filterSistemas">
-          <b-card style="cursor:pointer; min-width:9em;">
-            <a :href="sistema.link">
-            <b-card-text>
-                <fa :icon="sistema.icon" /> <br />
-                {{ sistema.name }}
-            </b-card-text>
-            </a>
-          </b-card>
-        </b-col>
-      </b-row>
-    </b-card-group>
+    <v-layout row wrap>
+      <v-flex md2 sm4 xs6 v-for="sistema in filterSistemas">
+        <v-card style="cursor:pointer; min-width:9em;">
+            <v-card-text class="px-0">
+              <fa :icon="sistema.icon" /> <br> {{ sistema.name }}
+            </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
+
+    <br><br>
+
+    <v-btn fab dark color="teal" large href="/servicos">
+      <v-icon dark>arrow_back</v-icon>
+    </v-btn>
   </div>
 </template>
 
