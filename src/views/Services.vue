@@ -1,5 +1,5 @@
 <template>
-  <div class="services">
+  <div class="services text-xs-center">
     <h1>Bem-vindo(a) Jefferson</h1>
 
     <br />
@@ -7,8 +7,8 @@
     <h2>Selecione o serviço desejado</h2>
 
     <br />
-	
-    <v-text-field v-model="name" placeholder="Digite o nome..."></v-text-field>
+
+    <v-text-field v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
 
     <br />
 
@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     filterServices() {
-      if(this.name.length == 0) return this.services;
+      if(this.name == null || this.name.length == 0) return this.services;
 
       return this.services.filter((service) => {
         return service.name.toUpperCase().includes(this.name.toUpperCase());

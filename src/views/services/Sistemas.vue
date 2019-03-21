@@ -1,5 +1,5 @@
 <template>
-  <div class="sistemas">
+  <div class="sistemas text-xs-center">
     <h1>Bem-vindo(a) Jefferson</h1>
 
     <br />
@@ -8,7 +8,7 @@
 
     <br />
 
-    <v-text-field v-model="name" placeholder="Digite o nome..."></v-text-field>
+    <v-text-field v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
 
     <br />
 
@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     filterSistemas() {
-      if(this.name.length == 0) return this.sistemas;
+      if(this.name == null || this.name.length == 0) return this.sistemas;
 
       return this.sistemas.filter((sistema) => {
         return sistema.name.toUpperCase().includes(this.name.toUpperCase());

@@ -1,83 +1,72 @@
 <template>
   <div>
-    <v-text-field placeholder="Digite o nome..."></v-text-field>
+    <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
 
-    <v-list>
-      <template v-for="utilitario in utilitarios">
+    <v-list v-if="filtro.length > 0">
+      <template v-for="utilitario in filtro">
         <v-list-tile>
-          <v-list-tile-avatar>
-              <v-btn @click="mostrarDados(utilitario)" icon ripple>
-                <v-icon x-large>{{ utilitario.icone }}</v-icon>
-              </v-btn>
+          <v-list-tile-avatar @click="mostrarInformacoes(utilitario)">
+              <v-btn icon ripple> <v-icon x-large>{{ utilitario.icone }}</v-icon> </v-btn>
           </v-list-tile-avatar>
 
           <v-list-tile-content>
             {{ utilitario.nome }}
           </v-list-tile-content>
 
-          <v-list-tile-action @click="editar(utilitario)" title="Editar">
-            <v-btn icon ripple>
-              <v-icon small>edit</v-icon>
-            </v-btn>
+          <v-list-tile-action title="Editar">
+            <v-btn icon ripple> <v-icon small>edit</v-icon> </v-btn>
           </v-list-tile-action>
-          <v-list-tile-action title="Excluir">
-            <v-btn icon ripple>
-              <v-icon small>clear</v-icon>
-            </v-btn>
+
+          <v-list-tile-action title="Excluir" @click="confirmarExcluir(utilitario)">
+            <v-btn icon ripple> <v-icon small>clear</v-icon> </v-btn>
           </v-list-tile-action>
+
         </v-list-tile>
 
         <v-divider></v-divider>
 
       </template>
+      <h4 class="text-xs-right pr-2 pt-2">{{ filtro.length }} utilitários encontrados</h4>
     </v-list>
+
+    <v-alert v-else :value="true" type="info"> Nenhum utilitário encontrado. </v-alert>
 
     <v-btn href="/admin/utilitarios/cadastrar" color="teal" dark absolute bottom right fab large style="bottom: 25px">
       <v-icon>add</v-icon>
     </v-btn>
 
-    <v-dialog v-model="mostrar" fullscreen hide-overlay transition="dialog-bottom-transition" scrollable>
-      <v-card tile v-if="mostrar">
-        <v-toolbar card dark color="teal">
-          <v-btn icon dark @click="mostrar = false">
-            <v-icon>close</v-icon>
-          </v-btn>
+    <ModalSimNao v-if="utilitario" v-model="modalExcluir" titulo="Excluir utilitário" @sim="excluir" @nao="cancelarExclusao">
+      Deseja excluir {{ this.utilitario.nome }} da lista de utilitários?
+    </ModalSimNao>
 
-          <v-toolbar-title>{{ utilitario.nome }}</v-toolbar-title>
-        </v-toolbar>
-        <v-card-text>
-          Texto
-        </v-card-text>
-      </v-card>
-    </v-dialog>
+    <ModalFechar v-if="utilitario" v-model="modalMostrar" @fechar="modalMostrar = false" :titulo="utilitario.nome">
+      <div class="mb-2">
+        <h3>Arquivos</h3>
+      </div>
 
-    <v-dialog v-model="mostrarEditar" fullscreen hide-overlay transition="dialog-bottom-transition" scrollable>
-      <v-card tile v-if="mostrarEditar">
-        <v-toolbar card dark color="teal">
-          <v-btn icon dark @click="mostrarEditar = false">
-            <v-icon>close</v-icon>
-          </v-btn>
+      <v-divider></v-divider>
 
-          <v-toolbar-title>Editar {{ utilitario.nome }}</v-toolbar-title>
-        </v-toolbar>
-        <v-card-text>
-
-        </v-card-text>
-      </v-card>
-    </v-dialog>
-
+      <div class="mt-2">
+        {{ this.utilitario.conteudo }}
+      </div>
+    </ModalFechar>
 
   </div>
 </template>
 
 <script>
+
+import ModalSimNao from '../../../components/ModalSimNao'
+import ModalFechar from '../../../components/ModalFechar'
+
 export default {
   data()  {
     return {
-      mostrar: false,
-      mostrarEditar: false,
-      excluir: false,
+      nome: '',
+      modalExcluir: false,
+      modalMostrar: false,
       utilitario: null,
+      conteudo: null,
       utilitarios: [
         { nome: 'Manuais', icone: 'description' },
         { nome: 'Links úteis', icone: 'link' },
@@ -88,14 +77,40 @@ export default {
     }
   },
   methods: {
-    mostrarDados(utilitario) {
-      this.mostrar = true;
-      this.utilitario = utilitario;
+    mostrarInformacoes(utilitario) {
+      fetch('https://baconipsum.com/api/?type=meat-and-filler').then((response) => {
+        response.text().then((text) => {
+          utilitario.conteudo = text
+          this.modalMostrar = true
+          this.utilitario = utilitario
+        })
+      })
     },
-    editar(utilitario) {
-      this.mostrarEditar = true;
-      this.utilitario = utilitario;
+    confirmarExcluir(utilitario) {
+      this.modalExcluir = true
+      this.utilitario = utilitario
+    },
+    excluir() {
+      this.utilitarios.splice(this.utilitarios.indexOf(this.utilitario), 1);
+      this.utilitario = null
+      this.modalExcluir = false
+    },
+    cancelarExclusao() {
+      this.utilitario = null
+      this.modalExcluir = false
     }
+  },
+  computed: {
+    filtro() {
+      if(this.nome == null || this.nome.length == 0) return this.utilitarios;
+
+      return this.utilitarios.filter((utilitario) => {
+        return utilitario.nome.toUpperCase().includes(this.nome.toUpperCase().trim());
+      })
+    }
+  },
+  components: {
+    ModalSimNao, ModalFechar
   }
 }
 </script>

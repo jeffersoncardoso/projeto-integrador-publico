@@ -16,7 +16,7 @@
     </v-toolbar>
 
     <v-content>
-      <v-container grid-list-md text-xs-center>
+      <v-container grid-list-md>
         <router-view/>
       </v-container>
     </v-content>

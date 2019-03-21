@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-text-field placeholder="Digite o nome..."></v-text-field>
+    <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
 
     <v-list>
       <template v-for="sistema in sistemas">
