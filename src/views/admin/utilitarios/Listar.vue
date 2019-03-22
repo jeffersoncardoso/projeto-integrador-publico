@@ -31,7 +31,7 @@
 
     <v-alert v-else :value="true" type="info"> Nenhum utilitário encontrado. </v-alert>
 
-    <v-btn href="/admin/utilitarios/cadastrar" color="teal" dark absolute bottom right fab large style="bottom: 25px">
+    <v-btn class="mb-5" href="/admin/utilitarios/cadastrar" color="teal" dark absolute bottom right fab large>
       <v-icon>add</v-icon>
     </v-btn>
 
