@@ -4,7 +4,7 @@
 
     <h2 class="pb-3">Selecione o sistema desejado</h2>
 
-    <v-text-field v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
+    <v-text-field v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
 
     <v-layout row wrap>
       <v-flex md2 sm4 xs4 v-for="sistema in filterSistemas" d-flex>
@@ -18,7 +18,7 @@
 
     <br><br>
 
-    <v-btn fab dark color="teal" large href="/servicos">
+    <v-btn fab dark color="teal" large :to="{ name: 'servicos' }">
       <v-icon dark>arrow_back</v-icon>
     </v-btn>
   </div>

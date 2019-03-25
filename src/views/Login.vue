@@ -11,7 +11,7 @@
           <v-text-field label="Usuário" required></v-text-field>
           <v-text-field type="password" label="Senha" required></v-text-field>
 
-          <v-btn color="info" href="/servicos">Entrar</v-btn>
+          <v-btn color="info" :to="{ name: 'servicos' }">Entrar</v-btn>
       </v-flex>
     </v-layout>
 

@@ -15,7 +15,7 @@
           </v-list-tile-content>
 
           <v-list-tile-action title="Editar">
-            <v-btn :href="'/admin/sistemas/' + sistema.id + '/editar'" icon ripple> <v-icon small>edit</v-icon> </v-btn>
+            <v-btn :to="{ name: 'admin.sistemas.editar', params: { id: sistema.id }}" icon ripple> <v-icon small>edit</v-icon> </v-btn>
           </v-list-tile-action>
 
           <v-list-tile-action title="Excluir" @click="confirmarExcluir(sistema)">
@@ -32,7 +32,7 @@
 
     <v-alert v-else :value="true" type="info"> Nenhum sistema encontrado. </v-alert>
 
-    <v-btn class="mb-5" href="/admin/sistemas/cadastrar" color="teal" dark absolute bottom right fab large>
+    <v-btn class="mb-5" :to="{ name: 'admin.sistemas.cadastrar' }" color="teal" dark absolute bottom right fab large>
       <v-icon>add</v-icon>
     </v-btn>
 

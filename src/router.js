@@ -16,7 +16,7 @@ import { default as AdminListarUtilitarios } from './views/admin/utilitarios/Lis
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes: [
     { path: '/', name: 'home', component: Login },

@@ -4,11 +4,11 @@
 
     <h2 class="pb-3">Selecione o serviço desejado</h2>
 
-    <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
+    <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
 
     <v-layout row wrap>
       <v-flex md2 sm3 xs4 v-for="servico in filtro" d-flex>
-        <v-card style="cursor:pointer" :href="servico.link">
+        <v-card :to="{ 'path' : servico.link }">
             <v-card-text class="px-0 text-xs-center">
               <v-icon color="blue-grey darken-3" large>{{ servico.icone }}</v-icon> <br> {{ servico.nome }}
             </v-card-text>
@@ -28,8 +28,8 @@ export default {
         { nome: 'Buscar servidores', icone: 'search', link: 'servicos/buscar-servidores' },
         { nome: 'Mural de avisos', icone: 'info', link: 'servicos/mural-avisos' },
         { nome: 'Meus dados', icone: 'person', link: 'servicos/meus-dados' },
-        { nome: 'Sistemas', icone: 'apps', link: 'servicos/sistemas '},
-        { nome: 'Utilitários', icone: 'help', link: 'servicos/utilitarios '}
+        { nome: 'Sistemas', icone: 'apps', link: 'servicos/sistemas'},
+        { nome: 'Utilitários', icone: 'help', link: 'servicos/utilitarios'}
       ]
     }
   },

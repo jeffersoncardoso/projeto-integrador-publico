@@ -15,7 +15,7 @@
           </v-list-tile-content>
 
           <v-list-tile-action title="Editar">
-            <v-btn icon ripple> <v-icon small>edit</v-icon> </v-btn>
+            <v-btn :to="{ name: 'admin.utilitarios.editar', params: { id: utilitario.id }}" icon ripple> <v-icon small>edit</v-icon> </v-btn>
           </v-list-tile-action>
 
           <v-list-tile-action title="Excluir" @click="confirmarExcluir(utilitario)">
@@ -32,7 +32,7 @@
 
     <v-alert v-else :value="true" type="info"> Nenhum utilitário encontrado. </v-alert>
 
-    <v-btn class="mb-5" href="/admin/utilitarios/cadastrar" color="teal" dark absolute bottom right fab large>
+    <v-btn class="mb-5" :to="{ name: 'admin.utilitarios.cadastrar' }" color="teal" dark absolute bottom right fab large>
       <v-icon>add</v-icon>
     </v-btn>
 

@@ -7,11 +7,11 @@
       <v-toolbar-title>Administração</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn href="/servicos" flat>Serviços ao Servidor</v-btn>
-        <v-btn href="/admin/avisos" flat>Avisos</v-btn>
-        <v-btn href="/admin/usuarios" flat>Usuários</v-btn>
-        <v-btn href="/admin/sistemas" flat>Sistemas</v-btn>
-        <v-btn href="/admin/utilitarios" flat>Utilitários</v-btn>
+        <v-btn :to="{name: 'servicos'}" flat>Serviços ao Servidor</v-btn>
+        <v-btn flat>Avisos</v-btn>
+        <v-btn flat>Usuários</v-btn>
+        <v-btn :to="{name: 'admin.sistemas'}" flat>Sistemas</v-btn>
+        <v-btn :to="{name: 'admin.utilitarios'}" flat>Utilitários</v-btn>
       </v-toolbar-items>
     </v-toolbar>
 
