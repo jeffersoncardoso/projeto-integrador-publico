@@ -6,15 +6,16 @@
       <template v-for="sistema in filtro">
         <v-list-tile>
           <v-list-tile-avatar @click="mostrarInformacoes(sistema)">
-              <v-btn icon ripple> <v-icon x-large>{{ sistema.icone }}</v-icon> </v-btn>
+            <v-btn icon ripple> <v-icon x-large>{{ sistema.icone }}</v-icon> </v-btn>
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            {{ sistema.nome }}
+            <strong>{{ sistema.nome_abreviado }}</strong>
+            <small class="hidden-xs-only">{{ sistema.nome }}</small>
           </v-list-tile-content>
 
           <v-list-tile-action title="Editar">
-            <v-btn icon ripple> <v-icon small>edit</v-icon> </v-btn>
+            <v-btn :href="'/admin/sistemas/' + sistema.id + '/editar'" icon ripple> <v-icon small>edit</v-icon> </v-btn>
           </v-list-tile-action>
 
           <v-list-tile-action title="Excluir" @click="confirmarExcluir(sistema)">
@@ -36,18 +37,36 @@
     </v-btn>
 
     <ModalSimNao v-if="sistema" v-model="modalExcluir" titulo="Excluir sistema" @sim="excluir" @nao="cancelarExclusao">
-      Deseja excluir {{ this.sistema.nome }} da lista de sistemas?
+      Deseja excluir <b>"{{ this.sistema.nome }}"</b> da lista de sistemas?
     </ModalSimNao>
 
-    <ModalFechar v-if="sistema" v-model="modalMostrar" @fechar="modalMostrar = false" :titulo="sistema.nome">
+    <ModalFechar v-if="sistema" v-model="modalMostrar" @fechar="modalMostrar = false" :titulo="sistema.nome + ' - ' + sistema.nome_abreviado">
       <div class="mb-2">
+        <a class="pr-2" target="_blank" :href="sistema.desenvolvimento">Desenvolvimento</a>
+        <a class="pr-2" target="_blank" :href="sistema.homologacao">Homologação</a>
+        <a class="pr-2" target="_blank" :href="sistema.producao">Produção</a>
+      </div>
+      <v-layout my-2>
+        <v-flex>
+          <strong>Tipo: </strong>
+          <span>{{ sistema.tipo }}</span>
+        </v-flex>
+        <v-flex>
+          <strong>Responsável: </strong>
+          <span>{{ sistema.responsavel }}</span>
+        </v-flex>
+      </v-layout>
+
+      <v-divider></v-divider>
+
+      <div class="my-2">
         <h3>Arquivos</h3>
       </div>
 
       <v-divider></v-divider>
 
       <div class="mt-2">
-        {{ this.sistema.conteudo }}
+        {{ this.sistema.sobre }}
       </div>
     </ModalFechar>
 
@@ -60,31 +79,25 @@ import ModalSimNao from '../../../components/ModalSimNao'
 import ModalFechar from '../../../components/ModalFechar'
 
 export default {
-  data: () => {
+  data() {
     return {
       nome: '',
       modalExcluir: false,
       modalMostrar: false,
       sistema: null,
       conteudo: null,
-      sistemas: [
-        { nome: 'SIGMA', icone: 'apps', url: 'https://sistemas.canoas.rs.gov.br/sigma' },
-        { nome: 'SAPC', icone: 'apps', url: 'https://sistemas.canoas.rs.gov.br/sigma' },
-        { nome: 'SIEI', icone: 'apps', url: 'https://sistemas.canoas.rs.gov.br/sigma' },
-        { nome: 'SGM', icone: 'apps', url: 'https://sistemas.canoas.rs.gov.br/sigma' },
-        { nome: 'Diário Oficial', icone: 'apps', url: 'https://sistemas.canoas.rs.gov.br/sigma' },
-      ]
+      sistemas: []
     }
+  },
+  created() {
+    fetch('/json/Sistemas.json').then((response) => {
+      response.json().then((sistemas) => { this.sistemas = sistemas })
+    })
   },
   methods: {
     mostrarInformacoes(sistema) {
-      fetch('https://baconipsum.com/api/?type=meat-and-filler').then((response) => {
-        response.text().then((text) => {
-          sistema.conteudo = text
-          this.modalMostrar = true
-          this.sistema = sistema
-        })
-      })
+      this.sistema = sistema
+      this.modalMostrar = true
     },
     confirmarExcluir(sistema) {
       this.modalExcluir = true

@@ -5,8 +5,9 @@
     <v-list v-if="filtro.length > 0">
       <template v-for="utilitario in filtro">
         <v-list-tile>
-          <v-list-tile-avatar @click="mostrarInformacoes(utilitario)">
-              <v-btn icon ripple> <v-icon x-large>{{ utilitario.icone }}</v-icon> </v-btn>
+          <v-list-tile-avatar>
+            <v-btn v-if="utilitario.link" target="_blank" :href="utilitario.link" icon ripple> <v-icon x-large>{{ utilitario.icone }}</v-icon> </v-btn>
+            <v-btn v-else @click="mostrarInformacoes(utilitario)" icon ripple> <v-icon x-large>{{ utilitario.icone }}</v-icon> </v-btn>
           </v-list-tile-avatar>
 
           <v-list-tile-content>
@@ -36,7 +37,7 @@
     </v-btn>
 
     <ModalSimNao v-if="utilitario" v-model="modalExcluir" titulo="Excluir utilitário" @sim="excluir" @nao="cancelarExclusao">
-      Deseja excluir {{ this.utilitario.nome }} da lista de utilitários?
+      Deseja excluir <b>"{{ this.utilitario.nome }}"</b> da lista de utilitários?
     </ModalSimNao>
 
     <ModalFechar v-if="utilitario" v-model="modalMostrar" @fechar="modalMostrar = false" :titulo="utilitario.nome">
@@ -67,14 +68,13 @@ export default {
       modalMostrar: false,
       utilitario: null,
       conteudo: null,
-      utilitarios: [
-        { nome: 'Manuais', icone: 'description' },
-        { nome: 'Links úteis', icone: 'link' },
-        { nome: 'Telefones úteis', icone: 'phone' },
-        { nome: 'Mapa', icone: 'location_on' },
-        { nome: 'Assinatura', icone: 'mail' },
-      ]
+      utilitarios: []
     }
+  },
+  created() {
+    fetch('/json/Utilitarios.json').then((response) => {
+      response.json().then((utilitarios) => { this.utilitarios = utilitarios })
+    })
   },
   methods: {
     mostrarInformacoes(utilitario) {

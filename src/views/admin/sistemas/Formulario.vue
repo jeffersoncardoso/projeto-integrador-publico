@@ -43,8 +43,6 @@
     </v-layout>
     <v-textarea rows="10" solo label="Sobre o sistema" required></v-textarea>
 
-
-
     <div class="text-xs-right">
       <v-btn color="secondary">Voltar</v-btn>
       <v-btn color="success">Salvar Sistema</v-btn>
@@ -56,6 +54,9 @@
 export default {
   data() {
     return {}
+  },
+  created() {
+
   }
 }
 </script>

@@ -1,16 +1,16 @@
 <template>
-  <div class="sistemas text-xs-center">
+  <div class="utilitarios text-xs-center">
     <h1 class="pb-3">Bem-vindo(a) Jefferson</h1>
 
-    <h2 class="pb-3">Selecione o sistema desejado</h2>
+    <h2 class="pb-3">Selecione o utilitário desejado</h2>
 
     <v-text-field v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
 
     <v-layout row wrap>
-      <v-flex md2 sm4 xs4 v-for="sistema in filterSistemas" d-flex>
+      <v-flex md2 sm4 xs4 v-for="utilitario in filterSistemas" d-flex>
         <v-card style="cursor:pointer;">
             <v-card-text class="px-0">
-              <v-icon color="blue-grey darken-3" large>{{ sistema.icone }}</v-icon> <br> {{ sistema.nome_abreviado }}
+              <v-icon color="blue-grey darken-3" large>{{ utilitario.icone }}</v-icon> <br> {{ utilitario.nome }}
             </v-card-text>
         </v-card>
       </v-flex>
@@ -26,24 +26,23 @@
 
 <script>
 export default {
-  name: 'sistemas',
   data: () => {
     return {
       name: '',
-      sistemas: []
+      utilitarios: []
     }
   },
   created() {
-    fetch('/json/Sistemas.json').then((response) => {
-      response.json().then((sistemas) => { this.sistemas = sistemas })
+    fetch('/json/Utilitarios.json').then((response) => {
+      response.json().then((utilitarios) => { this.utilitarios = utilitarios })
     })
   },
   computed: {
     filterSistemas() {
-      if(this.name == null || this.name.length == 0) return this.sistemas;
+      if(this.name == null || this.name.length == 0) return this.utilitarios;
 
-      return this.sistemas.filter((sistema) => {
-        return sistema.name.toUpperCase().includes(this.name.toUpperCase());
+      return this.utilitarios.filter((utilitario) => {
+        return utilitario.name.toUpperCase().includes(this.name.toUpperCase());
       })
     }
   }

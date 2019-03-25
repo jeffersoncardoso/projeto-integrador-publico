@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login text-xs-center">
     <v-layout>
       <v-flex>
         <fa icon="users" size="10x" color="#006b85" />

@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "Manuais",
+    "icone": "description",
+    "link": "",
+    "conteudo": ""
+  },
+  {
+    "nome": "Links úteis",
+    "icone": "link",
+    "link": "",
+    "conteudo": ""
+  },
+  {
+    "nome": "Telefones úteis",
+    "icone": "phone",
+    "link": "",
+    "conteudo": ""
+  },
+  {
+    "nome": "Mapa",
+    "icone": "location_on",
+    "link": "https://sistemas.canoas.rs.gov.br/memorandos",
+    "conteudo": ""
+  },
+  {
+    "nome": "Assinatura",
+    "icone": "mail",
+    "link": "",
+    "conteudo": ""
+  }
+]
