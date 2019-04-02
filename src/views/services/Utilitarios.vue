@@ -7,7 +7,7 @@
     <v-text-field v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
 
     <v-layout row wrap>
-      <v-flex md2 sm4 xs4 v-for="utilitario in filterSistemas" d-flex>
+      <v-flex md2 sm4 xs4 d-flex v-for="utilitario in filterSistemas" :key="utilitario">
         <v-card style="cursor:pointer;">
             <v-card-text class="px-0">
               <v-icon color="blue-grey darken-3" large>{{ utilitario.icone }}</v-icon> <br> {{ utilitario.nome }}
@@ -25,6 +25,10 @@
 </template>
 
 <script>
+
+import { ENV } from "@env"
+const axios = require('axios')
+
 export default {
   data: () => {
     return {
@@ -33,9 +37,7 @@ export default {
     }
   },
   created() {
-    fetch('/json/Utilitarios.json').then((response) => {
-      response.json().then((utilitarios) => { this.utilitarios = utilitarios })
-    })
+    axios.get(ENV['api.utilitario.listar']).then((response) => { this.utilitarios = response.data })
   },
   computed: {
     filterSistemas() {

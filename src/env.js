@@ -3,7 +3,7 @@ export const ENV = {
     'api.sistema.listar' : '/json/Sistemas.json',
     'api.sistema.editar' : '',
     'api.sistema.excluir' : '',
-    'api.sistema.buscar' : '',
+    'api.sistema.buscar' : '/json/Sistema.json',
 
     'api.utilitario.cadastrar' : '',
     'api.utilitario.listar' : '/json/Utilitarios.json',

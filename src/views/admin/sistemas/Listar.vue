@@ -3,7 +3,7 @@
     <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
 
     <v-list v-if="filtro.length > 0">
-      <template v-for="sistema in filtro">
+      <span v-for="sistema in filtro" :key="sistema">
         <v-list-tile>
           <v-list-tile-avatar @click="mostrarInformacoes(sistema)">
             <v-btn icon ripple> <v-icon x-large>{{ sistema.icone }}</v-icon> </v-btn>
@@ -26,7 +26,7 @@
 
         <v-divider></v-divider>
 
-      </template>
+      </span>
       <h4 class="text-xs-right pr-2 pt-2">{{ filtro.length }} sistemas encontrados</h4>
     </v-list>
 
@@ -75,8 +75,10 @@
 
 <script>
 
+import { ENV } from "@env"
 import ModalSimNao from '../../../components/ModalSimNao'
 import ModalFechar from '../../../components/ModalFechar'
+const axios = require('axios');
 
 export default {
   data() {
@@ -90,9 +92,7 @@ export default {
     }
   },
   created() {
-    fetch('/json/Sistemas.json').then((response) => {
-      response.json().then((sistemas) => { this.sistemas = sistemas })
-    })
+    axios.get(ENV['api.sistema.listar']).then((response) => { this.sistemas = response.data })
   },
   methods: {
     mostrarInformacoes(sistema) {

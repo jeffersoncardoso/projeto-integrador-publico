@@ -3,7 +3,7 @@
     <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
 
     <v-list v-if="filtro.length > 0">
-      <template v-for="utilitario in filtro">
+      <span v-for="utilitario in filtro" :key="utilitario">
         <v-list-tile>
           <v-list-tile-avatar>
             <v-btn v-if="utilitario.link" target="_blank" :href="utilitario.link" icon ripple> <v-icon x-large>{{ utilitario.icone }}</v-icon> </v-btn>
@@ -26,7 +26,7 @@
 
         <v-divider></v-divider>
 
-      </template>
+      </span>
       <h4 class="text-xs-right pr-2 pt-2">{{ filtro.length }} utilitários encontrados</h4>
     </v-list>
 
@@ -57,8 +57,10 @@
 
 <script>
 
+import { ENV } from "@env"
 import ModalSimNao from '../../../components/ModalSimNao'
 import ModalFechar from '../../../components/ModalFechar'
+const axios = require('axios');
 
 export default {
   data()  {
@@ -72,18 +74,14 @@ export default {
     }
   },
   created() {
-    fetch('/json/Utilitarios.json').then((response) => {
-      response.json().then((utilitarios) => { this.utilitarios = utilitarios })
-    })
+    axios.get(ENV['api.utilitario.listar']).then((response) => { this.utilitarios = response.data })
   },
   methods: {
     mostrarInformacoes(utilitario) {
-      fetch('https://baconipsum.com/api/?type=meat-and-filler').then((response) => {
-        response.text().then((text) => {
-          utilitario.conteudo = text
-          this.modalMostrar = true
-          this.utilitario = utilitario
-        })
+      axios.get(ENV['api.utilitario.buscar']).then((response) => { 
+        this.modalMostrar = true
+        utilitario.conteudo = response.data
+        this.utilitario = utilitario
       })
     },
     confirmarExcluir(utilitario) {
