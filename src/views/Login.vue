@@ -2,7 +2,7 @@
   <div class="login text-xs-center">
     <v-layout>
       <v-flex>
-        <fa icon="users" size="10x" color="#006b85" />
+        <v-icon icon="users" color="#006b85" x-large>person_pin</v-icon>
       </v-flex>
     </v-layout>
 

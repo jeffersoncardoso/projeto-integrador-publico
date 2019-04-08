@@ -3,7 +3,7 @@
     <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
 
     <v-list v-if="filtro.length > 0">
-      <span v-for="sistema in filtro" :key="sistema">
+      <span v-for="sistema in filtro" :key="sistema.id">
         <v-list-tile>
           <v-list-tile-avatar @click="mostrarInformacoes(sistema)">
             <v-btn icon ripple> <v-icon x-large>{{ sistema.icone }}</v-icon> </v-btn>
@@ -104,9 +104,11 @@ export default {
       this.sistema = sistema
     },
     excluir() {
-      this.sistemas.splice(this.sistemas.indexOf(this.sistema), 1);
-      this.sistema = null
       this.modalExcluir = false
+      axios.delete(ENV['api.sistema.excluir']).then((response) => { 
+        this.sistemas.splice(this.sistemas.indexOf(this.sistema), 1);
+        this.sistema = null
+      })
     },
     cancelarExclusao() {
       this.sistema = null
@@ -118,7 +120,9 @@ export default {
       if(this.nome == null || this.nome.length == 0) return this.sistemas;
 
       return this.sistemas.filter((sistema) => {
-        return sistema.nome.toUpperCase().includes(this.nome.toUpperCase().trim());
+        let filtro = this.nome.toUpperCase().trim();
+        return sistema.nome.toUpperCase().includes(filtro) ||
+               sistema.nome_abreviado.toUpperCase().includes(filtro);
       })
     }
   },

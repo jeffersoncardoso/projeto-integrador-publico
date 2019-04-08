@@ -3,7 +3,7 @@
     <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
 
     <v-list v-if="filtro.length > 0">
-      <span v-for="utilitario in filtro" :key="utilitario">
+      <span v-for="utilitario in filtro" :key="utilitario.id">
         <v-list-tile>
           <v-list-tile-avatar>
             <v-btn v-if="utilitario.link" target="_blank" :href="utilitario.link" icon ripple> <v-icon x-large>{{ utilitario.icone }}</v-icon> </v-btn>
@@ -89,9 +89,11 @@ export default {
       this.utilitario = utilitario
     },
     excluir() {
-      this.utilitarios.splice(this.utilitarios.indexOf(this.utilitario), 1);
-      this.utilitario = null
       this.modalExcluir = false
+      axios.delete(ENV['api.utilitario.excluir']).then((response) => { 
+        this.utilitarios.splice(this.utilitarios.indexOf(this.utilitario), 1);
+        this.utilitario = null
+      })
     },
     cancelarExclusao() {
       this.utilitario = null

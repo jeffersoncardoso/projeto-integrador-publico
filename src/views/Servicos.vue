@@ -7,7 +7,7 @@
     <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
 
     <v-layout row wrap>
-      <v-flex md2 sm3 xs4 v-for="servico in filtro" :key="servico" d-flex>
+      <v-flex md2 sm3 xs4 v-for="servico in filtro" :key="servico.id" d-flex>
         <v-card :to="{ 'path' : servico.link }">
             <v-card-text class="px-0 text-xs-center">
               <v-icon color="blue-grey darken-3" large>{{ servico.icone }}</v-icon> <br> {{ servico.nome }}

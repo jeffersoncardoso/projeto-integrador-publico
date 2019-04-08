@@ -11,24 +11,19 @@
         <v-icon large>{{ utilitario.icone}}</v-icon>
       </v-flex>
     </v-layout>
-    <v-layout pb-3>
-      <v-flex lg6 md6 sm6 xs12>
-        <v-select v-model="utilitario.tipo" :items="['Página', 'Site']" label="Tipo" required></v-select>
-      </v-flex>
-    </v-layout>
 
-    <v-text-field v-if="utilitario.tipo == 'Site'" label="Link do Site" v-model="utilitario.link"></v-text-field>
-
-    <v-textarea v-if="utilitario.tipo == 'Página'" rows="10" label="Conteúdo" v-model="utilitario.conteudo"></v-textarea>
+    <v-textarea rows="10" label="Conteúdo" v-model="utilitario.descricao"></v-textarea>
 
     <div class="text-xs-right">
-      <v-btn color="secondary">Voltar</v-btn>
-      <v-btn color="success">Salvar Utilitário</v-btn>
+      <v-btn @click="save()" color="success">Salvar Utilitário</v-btn>
     </div>
   </v-form>
 </template>
 
 <script>
+import { ENV } from "@env"
+const axios = require('axios');
+
 export default {
   data() {
     return {
@@ -36,7 +31,7 @@ export default {
         nome: "",
         icone: "description",
         link: "",
-        conteudo: "",
+        descricao: "",
         tipo: "Página"
       },
       icones: [
@@ -53,9 +48,15 @@ export default {
   },
   created() {
   },
-  computed: {
-    tipo() {
-      return (this.utilitario.conteudo) ? 'Página' : 'Site'
+  beforeCreate() {
+    if(this.$router.currentRoute.name == 'admin.utilitarios.editar') {
+      axios.get(ENV['api.utilitario.buscar']).then((response) => { this.utilitario = response.data })
+    }
+  },
+  methods: {
+    save() {
+      axios.post(ENV['api.utilitario.cadastrar']).then((response) => { this.utilitarios = response.data })
+      this.$router.push({'name': 'admin.utilitarios.listar'})
     }
   }
 }

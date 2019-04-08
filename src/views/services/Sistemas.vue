@@ -7,7 +7,7 @@
     <v-text-field v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
 
     <v-layout row wrap>
-      <v-flex md2 sm4 xs4 v-for="sistema in filterSistemas" :key="sistema" d-flex>
+      <v-flex md2 sm4 xs4 v-for="sistema in filterSistemas" :key="sistema.id" d-flex>
         <v-card style="cursor:pointer;">
             <v-card-text class="px-0">
               <v-icon color="blue-grey darken-3" large>{{ sistema.icone }}</v-icon> <br> {{ sistema.nome_abreviado }}
