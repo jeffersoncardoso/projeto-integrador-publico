@@ -86,8 +86,10 @@ export default {
   },
   methods: {
     save() {
-      axios.post(ENV['api.sistema.cadastrar']).then((response) => { this.sistemas = response.data })
-      this.$router.push({'name': 'admin.sistemas.listar'})
+      axios.post(ENV['api.sistema.cadastrar']).then((response) => { 
+		this.sistema = response.data
+		this.$router.push({'name': 'admin.sistemas.listar'})
+	  })
     }
   }
 }

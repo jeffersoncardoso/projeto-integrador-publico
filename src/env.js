@@ -1,13 +1,13 @@
 export const ENV = {
-    'api.sistema.cadastrar' : '',
-    'api.sistema.listar' : '/json/Sistemas.json',
-    'api.sistema.editar' : '',
-    'api.sistema.excluir' : '/json/Sistemas.json',
-    'api.sistema.buscar' : '/json/Sistema.json',
+    'api.sistema.cadastrar' : 'http://localhost:8080/api/sistema',
+    'api.sistema.listar' : 'http://localhost:8080/api/sistema',
+    'api.sistema.editar' : 'http://localhost:8080/api/sistema',
+    'api.sistema.excluir' : 'http://localhost:8080/api/sistema/1',
+    'api.sistema.buscar' : 'http://localhost:8080/api/sistema',
 
-    'api.utilitario.cadastrar' : '',
-    'api.utilitario.listar' : '/json/Utilitarios.json',
-    'api.utilitario.editar' : '',
-    'api.utilitario.excluir' : '',
-    'api.utilitario.buscar' : '/json/Utilitario.json',
+    'api.utilitario.cadastrar' : 'http://localhost:8080/api/utilitario',
+    'api.utilitario.listar' : 'http://localhost:8080/api/utilitario',
+    'api.utilitario.editar' : 'http://localhost:8080/api/utilitario',
+    'api.utilitario.excluir' : 'http://localhost:8080/api/utilitario',
+    'api.utilitario.buscar' : 'http://localhost:8080/api/utilitario',
 }
