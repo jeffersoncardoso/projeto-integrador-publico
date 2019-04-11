@@ -60,7 +60,6 @@
 import { ENV } from "@env"
 import ModalSimNao from '../../../components/ModalSimNao'
 import ModalFechar from '../../../components/ModalFechar'
-const axios = require('axios');
 
 export default {
   data()  {
@@ -74,11 +73,11 @@ export default {
     }
   },
   created() {
-    axios.get(ENV['api.utilitario.listar']).then((response) => { this.utilitarios = response.data })
+    this.$http.get(ENV['api.utilitario']).then((response) => { this.utilitarios = response.data })
   },
   methods: {
     mostrarInformacoes(utilitario) {
-      axios.get(ENV['api.utilitario.buscar']).then((response) => { 
+      this.$http.get(ENV['api.utilitario'] + utilitario.id).then((response) => { 
         this.modalMostrar = true
         utilitario.conteudo = response.data
         this.utilitario = utilitario
@@ -90,7 +89,7 @@ export default {
     },
     excluir() {
       this.modalExcluir = false
-      axios.delete(ENV['api.utilitario.excluir']).then((response) => { 
+      this.$http.delete(ENV['api.utilitario'] + this.utilitario.id).then((response) => { 
         this.utilitarios.splice(this.utilitarios.indexOf(this.utilitario), 1);
         this.utilitario = null
       })

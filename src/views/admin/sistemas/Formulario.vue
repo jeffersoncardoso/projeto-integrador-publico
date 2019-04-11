@@ -29,8 +29,6 @@
 
     <v-layout pb-3 row wrap>
       
-      
-      
     </v-layout>
 
     <v-layout row wrap>
@@ -45,7 +43,9 @@
       </v-flex>
     </v-layout>
     <v-layout pb-3>
-      <v-flex> <input type="file"> </v-flex>
+      <v-flex>
+        <SelectIcone v-model="sistema.icone" />
+      </v-flex>
     </v-layout>
     <v-textarea v-model="sistema.sobre" rows="10" solo label="Sobre o sistema" required></v-textarea>
 
@@ -57,7 +57,7 @@
 
 <script>
 import { ENV } from "@env"
-const axios = require('axios');
+import SelectIcone from '../../../components/SelectIcone'
 
 export default {
   data() {
@@ -79,18 +79,39 @@ export default {
       }
     }
   },
-  beforeCreate() {
-    if(this.$router.currentRoute.name == 'admin.sistemas.editar') {
-      axios.get(ENV['api.sistema.buscar']).then((response) => { this.sistema = response.data })
+  created() {
+    if(this.estaEditando()) {
+      this.$http.get(ENV['api.sistema'] + this.getId()).then((response) => {
+        this.sistema = response.data 
+      })
     }
   },
   methods: {
+    getId() {
+      return this.$router.currentRoute.params.id
+    },
+    estaEditando() {
+      return (this.$router.currentRoute.name == 'admin.sistemas.editar');
+    },
     save() {
-      axios.post(ENV['api.sistema.cadastrar']).then((response) => { 
-		this.sistema = response.data
-		this.$router.push({'name': 'admin.sistemas.listar'})
-	  })
+      let promise
+      if(this.estaEditando()) {
+        promise = this.$http.put(ENV['api.sistema'] + this.getId(), this.sistema)
+      }else{
+        promise = this.$http.post(ENV['api.sistema'], this.sistema)
+      }
+
+      promise.then((response) => { 
+        this.sistema = response.data
+        this.$router.push({'name': 'admin.sistemas.listar'})
+      }).catch(error => {
+        console.log(error)
+      })
+      
     }
+  },
+  components: {
+    SelectIcone
   }
 }
 </script>

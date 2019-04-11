@@ -78,7 +78,6 @@
 import { ENV } from "@env"
 import ModalSimNao from '../../../components/ModalSimNao'
 import ModalFechar from '../../../components/ModalFechar'
-const axios = require('axios');
 
 export default {
   data() {
@@ -92,7 +91,7 @@ export default {
     }
   },
   created() {
-    axios.get(ENV['api.sistema.listar']).then((response) => { this.sistemas = response.data })
+    this.$http.get(ENV['api.sistema']).then((response) => { this.sistemas = response.data })
   },
   methods: {
     mostrarInformacoes(sistema) {
@@ -105,7 +104,7 @@ export default {
     },
     excluir() {
       this.modalExcluir = false
-      axios.delete(ENV['api.sistema.excluir']).then((response) => { 
+      this.$http.delete(ENV['api.sistema'] + this.sistema.id).then((response) => { 
         this.sistemas.splice(this.sistemas.indexOf(this.sistema), 1);
         this.sistema = null
       })

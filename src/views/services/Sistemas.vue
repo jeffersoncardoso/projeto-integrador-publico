@@ -38,7 +38,7 @@ export default {
     }
   },
   created() {
-    axios.get(ENV['api.sistema.listar']).then((response) => { this.sistemas = response.data })
+    axios.get(ENV['api.sistema']).then((response) => { this.sistemas = response.data })
   },
   computed: {
     filterSistemas() {

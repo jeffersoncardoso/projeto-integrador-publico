@@ -37,7 +37,7 @@ export default {
     }
   },
   created() {
-    axios.get(ENV['api.utilitario.listar']).then((response) => { this.utilitarios = response.data })
+    axios.get(ENV['api.utilitario']).then((response) => { this.utilitarios = response.data })
   },
   computed: {
     filterSistemas() {

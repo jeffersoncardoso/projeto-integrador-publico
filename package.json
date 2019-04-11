@@ -14,6 +14,7 @@
     "tiptap": "^1.14.0",
     "vue": "^2.6.9",
     "vue-router": "^3.0.1",
+    "vue-toasted": "^1.1.26",
     "vuetify": "^1.5.5"
   },
   "devDependencies": {

@@ -22,7 +22,6 @@
 
 <script>
 import { ENV } from "@env"
-const axios = require('axios');
 
 export default {
   data() {
@@ -47,16 +46,20 @@ export default {
     }
   },
   created() {
+    
   },
   beforeCreate() {
     if(this.$router.currentRoute.name == 'admin.utilitarios.editar') {
-      axios.get(ENV['api.utilitario.buscar']).then((response) => { this.utilitario = response.data })
+      let id = this.$router.currentRoute.params.id
+      this.$http.get(ENV['api.utilitario'] + id).then((response) => { this.utilitario = response.data })
     }
   },
   methods: {
     save() {
-      axios.post(ENV['api.utilitario.cadastrar']).then((response) => { this.utilitarios = response.data })
-      this.$router.push({'name': 'admin.utilitarios.listar'})
+      this.$http.post(ENV['api.utilitario'], this.utilitario)
+        .then((response) => { 
+        this.$router.push({'name': 'admin.utilitarios.listar'})    
+      })
     }
   }
 }
