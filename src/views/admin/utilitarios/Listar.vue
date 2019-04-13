@@ -41,12 +41,6 @@
     </ModalSimNao>
 
     <ModalFechar v-if="utilitario" v-model="modalMostrar" @fechar="modalMostrar = false" :titulo="utilitario.nome">
-      <div class="mb-2">
-        <h3>Arquivos</h3>
-      </div>
-
-      <v-divider></v-divider>
-
       <div class="mt-2">
         {{ this.utilitario.conteudo }}
       </div>
@@ -77,11 +71,8 @@ export default {
   },
   methods: {
     mostrarInformacoes(utilitario) {
-      this.$http.get(ENV['api.utilitario'] + utilitario.id).then((response) => { 
-        this.modalMostrar = true
-        utilitario.conteudo = response.data
-        this.utilitario = utilitario
-      })
+      this.modalMostrar = true
+      this.utilitario = utilitario
     },
     confirmarExcluir(utilitario) {
       this.modalExcluir = true

@@ -55,10 +55,25 @@ export default {
     }
   },
   methods: {
+    getId() {
+      return this.$router.currentRoute.params.id
+    },
+    estaEditando() {
+      return (this.$router.currentRoute.name == 'admin.utilitarios.editar');
+    },
     save() {
-      this.$http.post(ENV['api.utilitario'], this.utilitario)
-        .then((response) => { 
-        this.$router.push({'name': 'admin.utilitarios.listar'})    
+      let promise
+      if(this.estaEditando()) {
+        promise = this.$http.put(ENV['api.utilitario']  + this.getId(), this.utilitario)
+      }else{
+        promise = this.$http.post(ENV['api.utilitario'], this.utilitario)
+      }
+
+      promise.then((response) => { 
+        this.utilitario = response.data
+        this.$router.push({'name': 'admin.utilitarios.listar'})
+      }).catch(error => {
+        console.log(error)
       })
     }
   }

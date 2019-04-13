@@ -40,7 +40,7 @@
       Deseja excluir <b>"{{ this.sistema.nome }}"</b> da lista de sistemas?
     </ModalSimNao>
 
-    <ModalFechar v-if="sistema" v-model="modalMostrar" @fechar="modalMostrar = false" :titulo="sistema.nome + ' - ' + sistema.nome_abreviado">
+    <ModalFechar v-if="sistema" v-model="modalMostrar" @fechar="modalMostrar = false" :titulo="sistema.nome">
       <div class="mb-2">
         <a class="pr-2" target="_blank" :href="sistema.desenvolvimento">Desenvolvimento</a>
         <a class="pr-2" target="_blank" :href="sistema.homologacao">Homologação</a>
@@ -58,10 +58,6 @@
       </v-layout>
 
       <v-divider></v-divider>
-
-      <div class="my-2">
-        <h3>Arquivos</h3>
-      </div>
 
       <v-divider></v-divider>
 

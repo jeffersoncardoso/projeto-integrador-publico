@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login.vue'
 import Servicos from './views/Servicos.vue'
-import TrocaSenha from './views/services/TrocaSenha.vue'
+import TrocaSenha from './views/servicos/TrocaSenha.vue'
 
-import Sistemas from './views/services/Sistemas.vue'
-import Utilitarios from './views/services/Utilitarios.vue'
+import Sistemas from './views/servicos/Sistemas.vue'
+import Utilitarios from './views/servicos/Utilitarios.vue'
 
 import { default as AdminFormSistemas } from './views/admin/sistemas/Formulario.vue'
 import { default as AdminListarSistemas } from './views/admin/sistemas/Listar.vue'
