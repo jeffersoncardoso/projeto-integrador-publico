@@ -8,13 +8,15 @@
 
     <v-layout row wrap>
       <v-flex md2 sm4 xs4 v-for="sistema in filterSistemas" :key="sistema.id" d-flex>
-        <v-card style="cursor:pointer;">
+        <v-card style="cursor:pointer;" @click="mostrar(sistema)">
             <v-card-text class="px-0">
               <v-icon color="blue-grey darken-3" large>{{ sistema.icone }}</v-icon> <br> {{ sistema.nome_abreviado }}
             </v-card-text>
         </v-card>
       </v-flex>
     </v-layout>
+
+    <ModalSistema name="sistema" title="Nome do sistema" />
 
     <br><br>
 
@@ -26,6 +28,7 @@
 
 <script>
 
+import ModalSistema from '../../components/ModalSistema'
 import { ENV } from "@env"
 const axios = require('axios')
 
@@ -37,8 +40,15 @@ export default {
       sistemas: []
     }
   },
+  methods: {
+    mostrar(sistema) {
+      this.$modal.show("sistema", {sistema: sistema})
+    }
+  },
   created() {
-    axios.get(ENV['api.sistema']).then((response) => { this.sistemas = response.data })
+    axios.get(ENV['api.sistema']).then((response) => { 
+      this.sistemas = response.data
+    })
   },
   computed: {
     filterSistemas() {
@@ -48,6 +58,9 @@ export default {
         return sistema.name.toUpperCase().includes(this.name.toUpperCase());
       })
     }
+  },
+  components: {
+    ModalSistema
   }
 }
 </script>

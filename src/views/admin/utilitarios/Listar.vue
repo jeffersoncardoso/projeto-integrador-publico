@@ -36,13 +36,13 @@
       <v-icon>add</v-icon>
     </v-btn>
 
-    <ModalSimNao v-if="utilitario" v-model="modalExcluir" titulo="Excluir utilitário" @sim="excluir" @nao="cancelarExclusao">
+    <ModalSimNao v-if="utilitario" name="excluir" titulo="Excluir utilitário" @sim="excluir">
       Deseja excluir <b>"{{ this.utilitario.nome }}"</b> da lista de utilitários?
     </ModalSimNao>
 
-    <ModalFechar v-if="utilitario" v-model="modalMostrar" @fechar="modalMostrar = false" :titulo="utilitario.nome">
+    <ModalFechar v-if="utilitario" name="mostrar" :titulo="utilitario.nome">
       <div class="mt-2">
-        {{ this.utilitario.conteudo }}
+        {{ this.utilitario.descricao }}
       </div>
     </ModalFechar>
 
@@ -59,10 +59,7 @@ export default {
   data()  {
     return {
       nome: '',
-      modalExcluir: false,
-      modalMostrar: false,
       utilitario: null,
-      conteudo: null,
       utilitarios: []
     }
   },
@@ -71,23 +68,18 @@ export default {
   },
   methods: {
     mostrarInformacoes(utilitario) {
-      this.modalMostrar = true
       this.utilitario = utilitario
+      this.$nextTick(() => { this.$modal.show("mostrar") })
     },
     confirmarExcluir(utilitario) {
-      this.modalExcluir = true
       this.utilitario = utilitario
+      this.$nextTick(() => { this.$modal.show("excluir") })
     },
     excluir() {
-      this.modalExcluir = false
       this.$http.delete(ENV['api.utilitario'] + this.utilitario.id).then((response) => { 
         this.utilitarios.splice(this.utilitarios.indexOf(this.utilitario), 1);
         this.utilitario = null
       })
-    },
-    cancelarExclusao() {
-      this.utilitario = null
-      this.modalExcluir = false
     }
   },
   computed: {

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.b393b5357eb92c829dcd4af9ead8da8b.js"
+  "/precache-manifest.99c3a100a9447bf6c8b8594780d905d5.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "projeto-integrador"});

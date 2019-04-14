@@ -5,8 +5,10 @@ import router from './router'
 import './registerServiceWorker'
 import axios from 'axios'
 import Toasted from 'vue-toasted';
+import VModal from 'vue-js-modal'
 
 Vue.use(Toasted)
+Vue.use(VModal)
 Vue.prototype.$http = axios;
 
 axios.interceptors.response.use(function (response) {

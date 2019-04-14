@@ -36,11 +36,11 @@
       <v-icon>add</v-icon>
     </v-btn>
 
-    <ModalSimNao v-if="sistema" v-model="modalExcluir" titulo="Excluir sistema" @sim="excluir" @nao="cancelarExclusao">
+    <ModalSimNao v-if="sistema" name="excluir" titulo="Excluir sistema" @sim="excluir">
       Deseja excluir <b>"{{ this.sistema.nome }}"</b> da lista de sistemas?
     </ModalSimNao>
 
-    <ModalFechar v-if="sistema" v-model="modalMostrar" @fechar="modalMostrar = false" :titulo="sistema.nome">
+    <ModalFechar v-if="sistema" name="mostrar" :titulo="sistema.nome">
       <div class="mb-2">
         <a class="pr-2" target="_blank" :href="sistema.desenvolvimento">Desenvolvimento</a>
         <a class="pr-2" target="_blank" :href="sistema.homologacao">Homologação</a>
@@ -79,8 +79,6 @@ export default {
   data() {
     return {
       nome: '',
-      modalExcluir: false,
-      modalMostrar: false,
       sistema: null,
       conteudo: null,
       sistemas: []
@@ -92,11 +90,11 @@ export default {
   methods: {
     mostrarInformacoes(sistema) {
       this.sistema = sistema
-      this.modalMostrar = true
+      this.$nextTick(() => { this.$modal.show("mostrar") })
     },
     confirmarExcluir(sistema) {
-      this.modalExcluir = true
       this.sistema = sistema
+      this.$nextTick(() => { this.$modal.show("excluir") })
     },
     excluir() {
       this.modalExcluir = false
@@ -104,10 +102,6 @@ export default {
         this.sistemas.splice(this.sistemas.indexOf(this.sistema), 1);
         this.sistema = null
       })
-    },
-    cancelarExclusao() {
-      this.sistema = null
-      this.modalExcluir = false
     }
   },
   computed: {

@@ -1,6 +1,8 @@
 <template>
   <Modal :name="name" :title="titulo">
-    <slot></slot>
+    <div v-if="sistema">
+        {{ sistema }}
+    </div>
   </Modal>
 </template>
 
@@ -8,7 +10,7 @@
 import Modal from './Modal'
 
 export default {
-  props: ['name', 'titulo'],
+  props: ['sistema', 'name', 'titulo'],
   components: { Modal }
 }
 </script>

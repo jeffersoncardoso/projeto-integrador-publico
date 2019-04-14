@@ -70,9 +70,9 @@ export default {
         responsavel: "",
         responsavel: "",
         sobre: "",
-        desenvolvimento: "",
-        homologacao: "",
-        producao: "",
+        desenvolvimento: "https://dsv.pmcanoas.rs.gov.br/",
+        homologacao: "https://hml.pmcanoas.rs.gov.br/",
+        producao: "https://sistemas.canoas.rs.gov.br/",
         servico: true,
         operacao: true,
         status: true

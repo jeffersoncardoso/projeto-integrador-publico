@@ -1,39 +1,28 @@
 <template>
-  <v-dialog v-model="value" max-width="500" persistent>
-    <v-card>
-      <v-card-title class="headline teal" style="color: #FFF">
-        {{ titulo }}
-        <v-spacer></v-spacer>
-        <v-btn @click="nao()" icon ripple style="color: #FFF"> <v-icon>clear</v-icon> </v-btn>
-      </v-card-title>
-
-      <v-card-text>
-        <slot></slot>
-      </v-card-text>
-
-      <v-card-actions>
-        <v-spacer></v-spacer>
-          <v-btn color="green darken-1" flat="flat" @click="nao()"> NÃO </v-btn>
-
-          <v-btn color="green darken-1" flat="flat" @click="sim()"> SIM </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+  <Modal :name="name" :title="titulo">
+    <slot></slot>
+    <template v-slot:actions>
+      <v-spacer></v-spacer>
+      <v-btn color="green darken-1" flat="flat" @click="nao()"> NÃO </v-btn>
+      <v-btn color="green darken-1" flat="flat" @click="sim()"> SIM </v-btn>
+    </template>
+  </Modal>
 </template>
 
 <script>
+import Modal from './Modal'
+
 export default {
-  props: ['value', 'titulo'],
+  props: ['name', 'titulo'],
   methods: {
     nao() {
-      this.$emit('nao')
-      this.$emit('input', false)
+      this.$modal.hide(this.name)
     },
     sim() {
       this.$emit('sim')
-      this.$emit('input', false)
     },
-  }
+  },
+  components: { Modal }
 }
 </script>
 
