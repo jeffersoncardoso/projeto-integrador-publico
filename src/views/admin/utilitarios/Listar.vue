@@ -1,6 +1,6 @@
 <template>
   <div v-if="!isLoading">
-    <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search" autofocus></v-text-field>
+    <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
 
     <v-list v-if="filtro.length > 0">
       <span v-for="utilitario in filtro" :key="utilitario.id">

@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/robots.txt"
   },
   {
-    "revision": "b7ae36332001f89d76e8",
-    "url": "/js/chunk-vendors.aa09967b.js"
+    "revision": "e236d8e151beebc0042b",
+    "url": "/js/chunk-vendors.d4ae1d89.js"
   },
   {
-    "revision": "37bbf24e9ea7d7c4c263",
-    "url": "/js/app.15e6966c.js"
+    "revision": "abf70849f9d6d7f080ea",
+    "url": "/js/app.d51dd9dd.js"
   },
   {
-    "revision": "68ac7bdb1a68854d174d61dbbf26e8cf",
+    "revision": "096298aef12fefc2a5eb249e9674b021",
     "url": "/index.html"
   },
   {
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/img/logo_canoas.afdf3c5b.png"
   },
   {
-    "revision": "b7ae36332001f89d76e8",
-    "url": "/css/chunk-vendors.388980c2.css"
+    "revision": "e236d8e151beebc0042b",
+    "url": "/css/chunk-vendors.5b8d93a3.css"
   }
 ];

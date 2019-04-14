@@ -1,6 +1,6 @@
 <template>
   <div class="sistemas text-xs-center">
-    <h1 class="pb-3">Bem-vindo(a) Jefferson</h1>
+    <h1 class="pb-3">Bem-vindo(a) {{ getNomeUsuario() }}</h1>
 
     <h2 class="pb-3">Selecione o sistema desejado</h2>
 
@@ -44,6 +44,9 @@ export default {
     mostrar(sistema) {
       this.sistemaSelecionado = sistema
       this.$modal.show("sistema")
+    },
+    getNomeUsuario() {
+      return localStorage.getItem("nome");
     }
   },
   created() {

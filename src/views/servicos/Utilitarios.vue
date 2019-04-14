@@ -1,6 +1,6 @@
 <template>
   <div class="utilitarios text-xs-center">
-    <h1 class="pb-3">Bem-vindo(a) Jefferson</h1>
+    <h1 class="pb-3">Bem-vindo(a) {{ getNomeUsuario() }}</h1>
 
     <h2 class="pb-3">Selecione o utilitário desejado</h2>
 
@@ -43,6 +43,9 @@ export default {
     mostrar(utilitario) {
       this.utilitarioSelecionado = utilitario
       this.$modal.show("utilitario")
+    },
+    getNomeUsuario() {
+      return localStorage.getItem("nome");
     }
   },
   created() {

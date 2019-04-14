@@ -5,10 +5,12 @@ import router from './router'
 import './registerServiceWorker'
 import axios from 'axios'
 import Toasted from 'vue-toasted';
-import VModal from 'vue-js-modal'
+import VModal from 'vue-js-modal';
+import VeeValidate from "vee-validate";
 
 Vue.use(Toasted)
 Vue.use(VModal)
+Vue.use(VeeValidate, { inject: false });
 Vue.prototype.$http = axios;
 
 Vue.mixin({

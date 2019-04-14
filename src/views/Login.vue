@@ -8,10 +8,10 @@
 
     <v-layout>
       <v-flex>
-          <v-text-field label="Usuário" required></v-text-field>
-          <v-text-field type="password" label="Senha" required></v-text-field>
+          <v-text-field v-model="usuario" label="Usuário" required></v-text-field>
+          <v-text-field v-model="senha" type="password" label="Senha" required></v-text-field>
 
-          <v-btn color="info" :to="{ name: 'servicos' }">Entrar</v-btn>
+          <v-btn @click="login" color="info">Entrar</v-btn>
       </v-flex>
     </v-layout>
 
@@ -24,7 +24,18 @@
 
 <script>
 export default {
-
+  data(){
+    return {
+      usuario: "",
+      senha: ""
+    }  
+  },
+  methods: {
+    login() {
+      localStorage.setItem("nome", this.usuario);
+      this.$router.push({'name': 'servicos'})
+    }
+  }
 }
 </script>
 

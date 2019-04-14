@@ -1,6 +1,6 @@
 <template>
   <div class="servicos text-xs-center">
-    <h1 class="pb-3">Bem-vindo(a) Jefferson</h1>
+    <h1 class="pb-3">Bem-vindo(a) {{ getNomeUsuario() }}</h1>
 
     <h2 class="pb-3">Selecione o serviço desejado</h2>
 
@@ -31,6 +31,11 @@ export default {
         { nome: 'Sistemas', icone: 'apps', link: 'servicos/sistemas'},
         { nome: 'Utilitários', icone: 'help', link: 'servicos/utilitarios'}
       ]
+    }
+  },
+  methods: {
+    getNomeUsuario() {
+      return localStorage.getItem("nome");
     }
   },
   computed: {
