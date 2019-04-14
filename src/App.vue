@@ -1,6 +1,5 @@
 <template>
   <v-app light>
-
     <v-toolbar color="teal" dark>
       <v-toolbar-title>
         <v-btn flat :to="{name: 'servicos'}">Serviços</v-btn>
@@ -21,6 +20,9 @@
         <v-btn :to="{name: 'admin.utilitarios'}" flat>Utilitários</v-btn>
       </v-toolbar-items>
     </v-toolbar>
+    
+    <v-progress-linear v-if="isLoading" height="7" style="margin: 0px" color="green" :indeterminate="true"></v-progress-linear>
+    <v-progress-linear v-else height="7" style="margin: 0px" color="light" :indeterminate="false"></v-progress-linear>
 
     <v-content>
       <v-container grid-list-md>
@@ -38,8 +40,13 @@
 
 <script>
 
+import axios from 'axios'
+
 export default {
   name: 'App',
+  beforeCreate(){
+    
+  },
   components: {
   },
   data () {

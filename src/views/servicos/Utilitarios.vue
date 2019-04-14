@@ -7,14 +7,16 @@
     <v-text-field v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
 
     <v-layout row wrap>
-      <v-flex md2 sm4 xs4 d-flex v-for="utilitario in filterSistemas" :key="utilitario.id">
-        <v-card style="cursor:pointer;">
+      <v-flex md2 sm4 xs4 d-flex v-for="utilitario in filterUtilitarios" :key="utilitario.id">
+        <v-card style="cursor:pointer;" @click="mostrar(utilitario)">
             <v-card-text class="px-0">
               <v-icon color="blue-grey darken-3" large>{{ utilitario.icone }}</v-icon> <br> {{ utilitario.nome }}
             </v-card-text>
         </v-card>
       </v-flex>
     </v-layout>
+
+    <ModalUtilitario :utilitario="utilitarioSelecionado" name="utilitario" />
 
     <br><br>
 
@@ -26,27 +28,37 @@
 
 <script>
 
+import ModalUtilitario from '../../components/ModalUtilitario'
 import { ENV } from "@env"
-const axios = require('axios')
 
 export default {
   data: () => {
     return {
       name: '',
+      utilitarioSelecionado: null,
       utilitarios: []
     }
   },
+  methods: {
+    mostrar(utilitario) {
+      this.utilitarioSelecionado = utilitario
+      this.$modal.show("utilitario")
+    }
+  },
   created() {
-    axios.get(ENV['api.utilitario']).then((response) => { this.utilitarios = response.data })
+    this.$http.get(ENV['api.utilitario']).then((response) => { this.utilitarios = response.data })
   },
   computed: {
-    filterSistemas() {
+    filterUtilitarios() {
       if(this.name == null || this.name.length == 0) return this.utilitarios;
 
       return this.utilitarios.filter((utilitario) => {
         return utilitario.name.toUpperCase().includes(this.name.toUpperCase());
       })
     }
+  },
+  components: {
+    ModalUtilitario
   }
 }
 </script>

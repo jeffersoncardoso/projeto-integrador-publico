@@ -16,7 +16,7 @@
       </v-flex>
     </v-layout>
 
-    <ModalSistema name="sistema" title="Nome do sistema" />
+    <ModalSistema :sistema="sistemaSelecionado" name="sistema" />
 
     <br><br>
 
@@ -30,23 +30,24 @@
 
 import ModalSistema from '../../components/ModalSistema'
 import { ENV } from "@env"
-const axios = require('axios')
 
 export default {
   name: 'sistemas',
   data: () => {
     return {
       name: '',
+      sistemaSelecionado: null,
       sistemas: []
     }
   },
   methods: {
     mostrar(sistema) {
-      this.$modal.show("sistema", {sistema: sistema})
+      this.sistemaSelecionado = sistema
+      this.$modal.show("sistema")
     }
   },
   created() {
-    axios.get(ENV['api.sistema']).then((response) => { 
+    this.$http.get(ENV['api.sistema']).then((response) => { 
       this.sistemas = response.data
     })
   },

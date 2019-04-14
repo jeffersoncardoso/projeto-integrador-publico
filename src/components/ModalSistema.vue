@@ -1,8 +1,12 @@
 <template>
   <Modal :name="name" :title="titulo">
     <div v-if="sistema">
-        {{ sistema }}
+        <div>{{ sistema.sobre }}</div>
     </div>
+    <template v-if="sistema" v-slot:actions>
+      <v-spacer></v-spacer>
+      <v-btn target="_blank" :href="sistema.producao" color="primary" flat="flat"> ACESSAR </v-btn>
+    </template>
   </Modal>
 </template>
 
@@ -10,7 +14,12 @@
 import Modal from './Modal'
 
 export default {
-  props: ['sistema', 'name', 'titulo'],
+  props: ['sistema', 'name'],
+  computed: {
+      titulo(){
+          return (this.sistema != null) ? this.sistema.nome : ''
+      }
+  },
   components: { Modal }
 }
 </script>
