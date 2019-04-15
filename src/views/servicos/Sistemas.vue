@@ -29,7 +29,7 @@
 <script>
 
 import ModalSistema from '../../components/ModalSistema'
-import { ENV } from "@env"
+import { ENV } from "../../env.js"
 
 export default {
   name: 'sistemas',

@@ -51,7 +51,7 @@
 
 <script>
 
-import { ENV } from "@env"
+import { ENV } from "../../../env.js"
 import ModalSimNao from '../../../components/ModalSimNao'
 import ModalFechar from '../../../components/ModalFechar'
 

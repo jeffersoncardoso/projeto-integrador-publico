@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { ENV } from "@env"
+import { ENV } from "../../../env.js"
 
 export default {
   data() {
