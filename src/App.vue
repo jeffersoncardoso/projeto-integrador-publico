@@ -40,8 +40,6 @@
 
 <script>
 
-import axios from 'axios'
-
 export default {
   name: 'App',
   beforeCreate(){
@@ -56,3 +54,7 @@ export default {
   }
 }
 </script>
+
+<style>
+</style>
+

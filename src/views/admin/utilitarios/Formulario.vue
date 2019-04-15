@@ -12,7 +12,7 @@
       </v-flex>
     </v-layout>
 
-    <v-textarea rows="10" label="Conteúdo" v-model="utilitario.descricao"></v-textarea>
+    <vue-editor v-model="utilitario.descricao"></vue-editor>
 
     <div class="text-xs-right">
       <v-btn @click="save()" color="success">Salvar Utilitário</v-btn>
@@ -22,6 +22,7 @@
 
 <script>
 import { ENV } from "../../../env.js"
+import { VueEditor } from "vue2-editor";
 
 export default {
   data() {
@@ -76,6 +77,9 @@ export default {
         console.log(error)
       })
     }
+  },
+  components: {
+    VueEditor
   }
 }
 </script>

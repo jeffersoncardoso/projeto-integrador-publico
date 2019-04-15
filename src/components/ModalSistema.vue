@@ -1,7 +1,6 @@
 <template>
   <Modal :name="name" :title="titulo">
-    <div v-if="sistema">
-        <div>{{ sistema.sobre }}</div>
+    <div v-html="sistema.sobre" v-if="sistema">
     </div>
     <template v-if="sistema" v-slot:actions>
       <v-spacer></v-spacer>
@@ -25,5 +24,4 @@ export default {
 </script>
 
 <style>
-
 </style>

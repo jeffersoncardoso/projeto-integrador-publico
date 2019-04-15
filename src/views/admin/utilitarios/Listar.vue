@@ -41,9 +41,7 @@
     </ModalSimNao>
 
     <ModalFechar v-if="utilitario" name="mostrar" :titulo="utilitario.nome">
-      <div class="mt-2">
-        {{ this.utilitario.descricao }}
-      </div>
+      <div class="mt-2" v-html="utilitario.descricao"> </div>
     </ModalFechar>
 
   </div>

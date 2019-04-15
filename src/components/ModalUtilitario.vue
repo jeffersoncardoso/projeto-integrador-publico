@@ -1,8 +1,6 @@
 <template>
   <Modal :name="name" :title="titulo">
-    <div v-if="utilitario">
-        {{ utilitario.descricao }}
-    </div>
+    <div v-html="utilitario.descricao" v-if="utilitario"> </div>
   </Modal>
 </template>
 

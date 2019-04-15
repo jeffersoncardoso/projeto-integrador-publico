@@ -47,7 +47,7 @@
         <SelectIcone v-model="sistema.icone" />
       </v-flex>
     </v-layout>
-    <v-textarea v-model="sistema.sobre" rows="10" solo label="Sobre o sistema" required></v-textarea>
+    <vue-editor v-model="sistema.sobre"></vue-editor>
 
     <div class="text-xs-right">
       <v-btn @click="save()" color="success">Salvar Sistema</v-btn>
@@ -58,6 +58,7 @@
 <script>
 import { ENV } from "../../../env.js"
 import SelectIcone from '../../../components/SelectIcone'
+import { VueEditor } from "vue2-editor";
 
 export default {
   data() {
@@ -111,7 +112,7 @@ export default {
     }
   },
   components: {
-    SelectIcone
+    SelectIcone, VueEditor
   }
 }
 </script>

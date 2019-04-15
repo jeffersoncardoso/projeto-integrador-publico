@@ -62,7 +62,7 @@
       <v-divider></v-divider>
 
       <div class="mt-2">
-        {{ this.sistema.sobre }}
+        <div class="mt-2" v-html="sistema.sobre"> </div>
       </div>
     </ModalFechar>
 
