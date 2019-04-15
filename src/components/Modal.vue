@@ -42,6 +42,12 @@ export default {
     .v--modal p {
         margin-bottom: 0px;
     }
+    .v--modal .ql-video {
+        width: 95%;
+        max-width: 500px;
+        height: 300px;
+        margin: 10px;
+    }
 </style>
 
 
