@@ -1,5 +1,5 @@
 <template>
-  <Modal :name="name" :title="titulo">
+  <Modal :largura="500" :name="name" :title="titulo">
     <slot></slot>
     <template v-slot:actions>
       <v-spacer></v-spacer>

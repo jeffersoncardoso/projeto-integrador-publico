@@ -1,5 +1,5 @@
 <template>
-  <Modal :name="name" :title="titulo">
+  <Modal largura="100%" :name="name" :title="titulo">
     <div v-html="utilitario.descricao" v-if="utilitario"> </div>
   </Modal>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <Modal :name="name" :title="titulo">
+  <Modal largura="1000" :name="name" :title="titulo">
     <slot></slot>
   </Modal>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <modal :name="name" height="auto" scrollable>
+    <modal :name="name" :width="largura" :maxWidth="1000" height="auto" :scrollable="true" :adaptive="true">
         <v-card min-height="100%">
             <v-card-title class="headline teal" style="color: #FFF">
                 <slot name="title">{{ title }}</slot>
@@ -22,7 +22,7 @@
 <script>
 export default {
     props: [
-        'name', 'title'
+        'name', 'title', 'largura'
     ],
     methods: {
         close() {
@@ -33,7 +33,15 @@ export default {
 </script>
 
 <style>
-
+    .v--modal img{
+        max-width: 100%;
+    }
+    .v--modal .ql-align-center{
+        text-align:center;
+    }
+    .v--modal p {
+        margin-bottom: 0px;
+    }
 </style>
 
 

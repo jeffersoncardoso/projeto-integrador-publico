@@ -36,13 +36,21 @@ export default {
       },
       icones: [
         { text: "Documento", value: "description" },
+        { text: "Assinatura", value: "create" },
+        { text: "Ferramenta", value: "build" },
         { text: "Aplicativo", value: "apps" },
         { text: "Link", value: "launch" },
         { text: "Ajuda", value: "help" },
         { text: "Ínicio", value: "home" },
         { text: "Telefone", value: "call" },
         { text: "Local", value: "location_on" },
-        { text: "Mensagem", value: "mail" }
+        { text: "Mensagem", value: "mail" },
+        { text: "Carrinho", value: "shopping_cart" },
+        { text: "Impressora", value: "print" },
+        { text: "Busca", value: "search" },
+        { text: "Anexos", value: "attach_file" },
+        { text: "Celular", value: "smartphone" },
+        { text: "Educação", value: "school" }
       ]
     }
   },
