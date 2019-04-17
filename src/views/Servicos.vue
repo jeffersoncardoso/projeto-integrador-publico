@@ -25,7 +25,7 @@ export default {
       nome: '',
       servicos: [
         { nome: 'Troca de senha', icone: 'vpn_key', link: 'servicos/troca-senha' },
-        { nome: 'Buscar servidores', icone: 'search', link: 'servicos/buscar-servidores' },
+        { nome: 'Buscar servidores', icone: 'search', link: 'servicos/busca-funcionarios' },
         { nome: 'Mural de avisos', icone: 'info', link: 'servicos/mural-avisos' },
         { nome: 'Meus dados', icone: 'person', link: 'servicos/meus-dados' },
         { nome: 'Sistemas', icone: 'apps', link: 'servicos/sistemas'},
