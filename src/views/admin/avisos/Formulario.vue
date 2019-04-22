@@ -7,7 +7,19 @@
     </v-layout>
     <v-layout row wrap>
         <v-flex lg12 md12 sm12>
-            <v-textarea v-model="aviso.descricao" label="Descrição" size="255" required counter></v-textarea>
+            <v-textarea v-model="aviso.descricao" label="Descrição" required counter></v-textarea>
+        </v-flex>
+    </v-layout>
+
+    <v-layout row wrap>
+        <v-flex lg12 md12 sm12>
+            <v-text-field v-model="aviso.url" label="Link de destino" required counter></v-text-field>
+        </v-flex>
+    </v-layout>
+
+    <v-layout row wrap>
+        <v-flex>
+            <v-switch v-model="aviso.status" value="Ativo" label="Status"></v-switch>
         </v-flex>
     </v-layout>
 
@@ -33,7 +45,7 @@ export default {
             aviso: {
                 assunto: '',
                 descricao: '',
-                status: 'Ativo',
+                status: '',
             }
         }
     },
@@ -42,7 +54,7 @@ export default {
             return this.$router.currentRoute.params.id
         },
         estaEditando() {
-            return (this.$router.currentRoute.name == 'admin.sistemas.editar');
+            return (this.$router.currentRoute.name == 'admin.avisos.editar');
         },
         save() {
             let promise

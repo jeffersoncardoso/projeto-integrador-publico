@@ -75,7 +75,6 @@ export default {
       this.$nextTick(() => { this.$modal.show("excluir") })
     },
     excluir() {
-      this.modalExcluir = false
       this.$http.delete(ENV['api.usuario'] + this.usuario.id).then((response) => { 
         this.usuarios.splice(this.usuarios.indexOf(this.usuario), 1);
         this.usuario = null

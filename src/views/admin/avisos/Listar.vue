@@ -6,8 +6,11 @@
         <span v-for="aviso in filtro" :key="aviso.id">
             <v-list-tile>
 
-                <v-list-tile-avatar @click="habilitarDesabilitarNotificacoes(aviso)">
-                    <v-btn icon ripple> <v-icon x-large>{{ (aviso.status == 'Ativo') ? 'notifications' : 'notifications_off' }}</v-icon> </v-btn>
+                <v-list-tile-avatar>
+                    <v-btn icon ripple @click="confirmarEnviarNotificacoes(aviso)" v-if="aviso.status == 'Ativo'">
+                        <v-icon x-large>notifications</v-icon>
+                    </v-btn>
+                    <v-icon v-else x-large>archive</v-icon>
                 </v-list-tile-avatar>
 
                 <v-list-tile-content>
@@ -41,6 +44,10 @@
             Deseja excluir <b>"{{ this.aviso.assunto }}"</b> da lista de avisos?
         </ModalSimNao>
 
+        <ModalSimNao v-if="aviso" name="notificacao" titulo="Enviar notificações" @sim="enviarNotificacoes()">
+            Deseja enviar notificações para <b>TODOS OS SERVIDORES</b> de <b>"{{ this.aviso.assunto }}"</b>?
+        </ModalSimNao>
+
     </div>
 </template>
 
@@ -58,13 +65,19 @@ export default {
     }
   },
   created() {
-    this.$http.get(ENV['api.aviso']).then((response) => { 
+    this.$http.get(ENV['api.aviso']).then((response) => {
       this.avisos = response.data
     })
   },
   methods: {
-    habilitarDesabilitarNotificacoes(aviso) {
-        aviso.status = (aviso.status == 'Ativo') ? 'Inativo' : 'Ativo';
+    enviarNotificacoes() {
+        alert("Enviando notificações");
+        this.$modal.hide("notificacao");
+        this.aviso = null;
+    },
+    confirmarEnviarNotificacoes(aviso) {
+        this.aviso = aviso
+        this.$nextTick(() => { this.$modal.show("notificacao") })
     },
     confirmarExcluir(aviso) {
       this.aviso = aviso
