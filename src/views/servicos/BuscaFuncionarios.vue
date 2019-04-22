@@ -21,9 +21,9 @@
                     <v-layout row wrap>
                         <v-flex lg9 md9 sm9 xs12>
                             <div>
-                                <h2>
+                                <h3 style="text-transform: uppercase;">
                                     {{ funcionario.nome }} 
-                                </h2>
+                                </h3>
                                 <h4 style="text-transform: uppercase;">{{ funcionario.secretaria }} - {{ funcionario.cargo }}</h4>
                                 <h5>{{ funcionario.email }}</h5>
                             </div>

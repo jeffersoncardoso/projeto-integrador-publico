@@ -14,6 +14,12 @@ import { default as AdminListarSistemas } from './views/admin/sistemas/Listar.vu
 import { default as AdminFormUtilitarios } from './views/admin/utilitarios/Formulario.vue'
 import { default as AdminListarUtilitarios } from './views/admin/utilitarios/Listar.vue'
 
+import { default as AdminFormUsuarios } from './views/admin/usuarios/Formulario.vue'
+import { default as AdminListarUsuarios } from './views/admin/usuarios/Listar.vue'
+
+import { default as AdminFormAvisos } from './views/admin/avisos/Formulario.vue'
+import { default as AdminListarAvisos } from './views/admin/avisos/Listar.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +35,16 @@ export default new Router({
     { path: '/servicos/utilitarios', name: 'utilitarios', component: Utilitarios },
 
     { path: '/admin', name: 'admin', component: Servicos },
+
+    { path: '/admin/usuarios', name: 'admin.usuarios', component: AdminListarUsuarios },
+    { path: '/admin/usuarios/cadastrar', name: 'admin.usuarios.cadastrar', component: AdminFormUsuarios },
+    { path: '/admin/usuarios/:id/editar', name: 'admin.usuarios.editar', component: AdminFormUsuarios },
+    { path: '/admin/usuarios/listar', name: 'admin.usuarios.listar', component: AdminListarUsuarios },
+
+    { path: '/admin/avisos', name: 'admin.avisos', component: AdminListarAvisos },
+    { path: '/admin/avisos/cadastrar', name: 'admin.avisos.cadastrar', component: AdminFormAvisos },
+    { path: '/admin/avisos/:id/editar', name: 'admin.avisos.editar', component: AdminFormAvisos },
+    { path: '/admin/avisos/listar', name: 'admin.avisos.listar', component: AdminListarAvisos },
 
     { path: '/admin/sistemas', name: 'admin.sistemas', component: AdminListarSistemas },
     { path: '/admin/sistemas/cadastrar', name: 'admin.sistemas.cadastrar', component: AdminFormSistemas },
