@@ -5,6 +5,7 @@ import Servicos from './views/Servicos.vue'
 import TrocaSenha from './views/servicos/TrocaSenha.vue'
 
 import Sistemas from './views/servicos/Sistemas.vue'
+import MuralAvisos from './views/servicos/MuralAvisos.vue'
 import Utilitarios from './views/servicos/Utilitarios.vue'
 import BuscaFuncionarios from './views/servicos/BuscaFuncionarios.vue'
 
@@ -30,6 +31,7 @@ export default new Router({
     { path: '/login', name: 'login', component: Login },
     { path: '/servicos', name: 'servicos', component: Servicos },
     { path: '/servicos/busca-funcionarios', name: 'busca-funcionarios', component: BuscaFuncionarios },
+    { path: '/servicos/mural-avisos', name: 'mural-avisos', component: MuralAvisos },
     { path: '/servicos/troca-senha', name: 'troca-senha', component: TrocaSenha },
     { path: '/servicos/sistemas', name: 'sistemas', component: Sistemas },
     { path: '/servicos/utilitarios', name: 'utilitarios', component: Utilitarios },

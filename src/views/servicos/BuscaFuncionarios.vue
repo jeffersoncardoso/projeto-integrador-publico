@@ -8,10 +8,16 @@
                 <v-autocomplete v-model="secretaria" :items="secretarias" solo placeholder="Secretaria" clearable></v-autocomplete>
             </v-flex>
             <v-flex lg3 md3 sm3 xs6>
-                <v-autocomplete v-model="cargo" item-value="valor" item-text="descricao" :items="cargos" solo placeholder="Cargo" clearable></v-autocomplete>
+                <v-autocomplete v-model="titulo" item-value="valor" item-text="descricao" :items="titulos" solo placeholder="Cargo" clearable></v-autocomplete>
             </v-flex>
             <v-flex lg12 md12 sm12 xs12>
                 <v-btn @click="buscar" color="teal" large block dark><v-icon right>search</v-icon> Buscar</v-btn>
+            </v-flex>
+        </v-layout>
+
+        <v-layout row wrap>
+            <v-flex>
+                <v-alert class="mb-10" :value="funcionarios.length == 300" type="info"> A busca é limitada em 300 resultados, por favor seja mais específico. </v-alert>
             </v-flex>
         </v-layout>
 
@@ -24,21 +30,24 @@
                                 <h3 style="text-transform: uppercase;">
                                     {{ funcionario.nome }} 
                                 </h3>
-                                <h4 style="text-transform: uppercase;">{{ funcionario.secretaria }} - {{ funcionario.cargo }}</h4>
+                                <h4 style="text-transform: uppercase;">
+                                    {{ (funcionario.secretaria.trim()) ? funcionario.secretaria : "" }}
+                                    {{ (funcionario.cargo.trim()) ? " - " + funcionario.cargo : "" }}
+                                </h4>
                                 <h5>{{ funcionario.email }}</h5>
                             </div>
                         </v-flex>
                         <v-flex lg3 md3 sm3 xs12>
                             <div>
                                 <span>
-                                    <div v-if="funcionario.ramal && funcionario.ramal.trim().length > 0">
-                                        Ramal: <b>{{ funcionario.ramal }}</b>
+                                    <div>
+                                        Ramal: <b>{{ (funcionario.ramal && funcionario.ramal.trim().length > 0) ?  funcionario.ramal : "Não informado" }}</b>
                                     </div>
-                                    <div v-if="funcionario.telefone && funcionario.telefone.trim().length > 0">
-                                        Telefone: <b>{{ funcionario.telefone }}</b>
+                                    <div>
+                                        Telefone: <b>{{ funcionario.telefone && funcionario.telefone.trim().length > 0 ? funcionario.telefone : "Não informado" }}</b>
                                     </div>
-                                    <div v-if="funcionario.celular && funcionario.celular.trim().length > 0">
-                                        Celular: <b>{{ funcionario.celular }}</b>
+                                    <div>
+                                        Celular: <b>{{ funcionario.celular && funcionario.celular.trim().length > 0 ? funcionario.celular : "Não informado" }}</b>
                                     </div>
                                 </span>
                             </div>
@@ -75,9 +84,9 @@ export default {
         return {
             nome: 'Jefferson',
             secretaria: '',
-            cargo : '',
+            titulo : '',
             funcionarios: [],
-            cargos: [
+            titulos: [
                 { descricao: 'Secretario', valor: 'S' },
                 { descricao: 'Diretor', valor: 'D' },
                 { descricao: 'Chefe de Unidade', valor: 'U' },
@@ -94,7 +103,7 @@ export default {
                 params: { 
                     'nome': this.nome,
                     'secretaria': this.secretaria,
-                    'cargo': this.cargo
+                    'titulo': this.titulo
                 },
                 headers: { Authorization: 'Basic OmUzY2RjOTBjNmJhMTc1ZThjZWNiZDEwMDI0OTAzNTZl'}
             }).then((result) => {
