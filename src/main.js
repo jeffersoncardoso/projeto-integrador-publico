@@ -51,6 +51,31 @@ Vue.mixin({
 
 Vue.config.productionTip = false
 
+import * as firebase from "firebase";
+var config = {
+  apiKey: "AIzaSyDJuNPUNA12NKyosaMlyI52Tn23gQFl3SA",
+  authDomain: "projeto-integrador-6962f.firebaseapp.com",
+  databaseURL: "https://projeto-integrador-6962f.firebaseio.com",
+  projectId: "projeto-integrador-6962f",
+  storageBucket: "projeto-integrador-6962f.appspot.com",
+  messagingSenderId: "593639466370"
+};
+firebase.initializeApp(config);
+
+const messaging = firebase.messaging();
+
+messaging.requestPermission().then(() => {
+  console.log('Notification permission granted.');
+
+  // Get Token
+  messaging.getToken().then((token) => {
+    console.log(token)
+  })
+  
+}).catch((err) => {
+  console.log('Unable to get permission to notify.', err);
+});
+
 let vue = new Vue({
   router,
   render: h => h(App)
