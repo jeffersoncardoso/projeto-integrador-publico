@@ -23,6 +23,8 @@
         </v-flex>
     </v-layout>
 
+    <vue-editor v-model="aviso.conteudo"></vue-editor>
+
     <div class="text-xs-right">
       <v-btn @click="save()" color="success">Salvar Aviso</v-btn>
     </div>
@@ -31,6 +33,7 @@
 
 <script>
 import { ENV } from "../../../env.js"
+import { VueEditor } from "vue2-editor";
 
 export default {
     created() {
@@ -72,6 +75,9 @@ export default {
             })
         }
     },
+    components: {
+        VueEditor
+    }
 }
 </script>
 
