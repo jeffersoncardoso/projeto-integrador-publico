@@ -51,6 +51,22 @@ Vue.mixin({
 
 Vue.config.productionTip = false
 
+
+var firebase = require("firebase/app");
+require("firebase/messaging");
+
+var config = {
+  apiKey: "AIzaSyDJuNPUNA12NKyosaMlyI52Tn23gQFl3SA",
+  authDomain: "projeto-integrador-6962f.firebaseapp.com",
+  databaseURL: "https://projeto-integrador-6962f.firebaseio.com",
+  projectId: "projeto-integrador-6962f",
+  storageBucket: "projeto-integrador-6962f.appspot.com",
+  messagingSenderId: "593639466370"
+};
+firebase.initializeApp(config);
+
+Vue.prototype.$messaging = firebase.messaging();
+
 let vue = new Vue({
   router,
   render: h => h(App)

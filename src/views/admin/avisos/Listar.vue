@@ -78,9 +78,9 @@ export default {
             "click_action": "http://localhost:8080/#/admin/avisos/" + this.aviso.id + "/editar",
             "icon": "https://sistemas.canoas.rs.gov.br/servidor/images/logo-brasao-prefeitura-canoas.png"
           },
-          "to": "cEh32J_HFoo:APA91bGvqhkxb1S0845oANYeCCLeZExt7VcaZ9frkHgiTIhI7Pe2MCK3_05Wi41ae7zqLNIU0H7pRv-Q4ZNQOzWUXS611ABdaltP_Vy-5vq01ZRA_Xf5pL35-aScNGiBV3JzRIUHtL-R"
+          "to": "/topics/avisos"
         }, {
-          headers: { Authorization: 'key=AAAAijerZYI:APA91bF0KPxwb4OGgoumMciW1cKElrGDj4SMLuUWDKJwM0b8Sctu8-o_fJ7CSkCODlrZVaCQ5qRWD7R3RIL38YphUAkXiee9t2ckPTTil5ikvUx3awrnpCCPAwr1PCRU6IQvqmU7QDb_'}
+          headers: { Authorization: ENV['firebase']}
         })
 
         this.$modal.hide("notificacao");

@@ -5,5 +5,6 @@ export const ENV = {
     'api.sistema' : 'https://portalservicos.jeffersoncardoso.info/api/sistema/',
     'api.utilitario' : 'https://portalservicos.jeffersoncardoso.info/api/utilitario/',
     'api.buscar-funcionario' : 'https://sistemas.canoas.rs.gov.br/ldap-api/busca-publica',
-    'api.buscar-cpf' : 'https://dsv.pmcanoas.rs.gov.br/ldap-api/funcionario'
+    'api.buscar-cpf' : 'https://dsv.pmcanoas.rs.gov.br/ldap-api/funcionario',
+    'firebase' : 'key=AAAAijerZYI:APA91bF0KPxwb4OGgoumMciW1cKElrGDj4SMLuUWDKJwM0b8Sctu8-o_fJ7CSkCODlrZVaCQ5qRWD7R3RIL38YphUAkXiee9t2ckPTTil5ikvUx3awrnpCCPAwr1PCRU6IQvqmU7QDb_'
 }

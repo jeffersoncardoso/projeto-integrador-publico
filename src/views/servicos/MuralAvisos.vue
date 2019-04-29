@@ -25,18 +25,6 @@
 <script>
 import { ENV } from "../../env.js"
 
-import * as firebase from "firebase";
-var config = {
-  apiKey: "AIzaSyDJuNPUNA12NKyosaMlyI52Tn23gQFl3SA",
-  authDomain: "projeto-integrador-6962f.firebaseapp.com",
-  databaseURL: "https://projeto-integrador-6962f.firebaseio.com",
-  projectId: "projeto-integrador-6962f",
-  storageBucket: "projeto-integrador-6962f.appspot.com",
-  messagingSenderId: "593639466370"
-};
-firebase.initializeApp(config);
-const messaging = firebase.messaging();
-
 
 export default {
   data() {
@@ -47,7 +35,9 @@ export default {
   },
   created() {
     if(Notification.permission == "granted") {
-      messaging.getToken().then(token => { this.token = token; })
+      this.$messaging.getToken().then(token => {
+        this.token = token; 
+      })
     }
 
     this.$http.get(ENV['api.aviso']).then((response) => {
@@ -57,16 +47,21 @@ export default {
   methods: {
     habilitarNotificacoes() {
       if(this.token) {
-        messaging.deleteToken(this.token)
+        this.$messaging.deleteToken(this.token)
         this.token = null
 
         return
       }
 
 
-      messaging.requestPermission().then(() => {
-        messaging.getToken().then((token) => {
+      this.$messaging.requestPermission().then(() => {
+        this.$messaging.getToken().then((token) => {
           this.token = token;
+
+          this.$http.post("https://iid.googleapis.com/iid/v1/" + token + "/rel/topics/avisos", {}, {
+            headers: { Authorization: ENV['firebase']}
+          })
+
         })
         
       }).catch((err) => {
