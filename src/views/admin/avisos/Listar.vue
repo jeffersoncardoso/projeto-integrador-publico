@@ -76,7 +76,7 @@ export default {
             "title": this.aviso.assunto,
             "body": this.aviso.descricao,
             "click_action": "http://localhost:8080/#/admin/avisos/" + this.aviso.id + "/editar",
-            "icon": "https://sistemas.canoas.rs.gov.br/servidor/images/logo-brasao-prefeitura-canoas.png"
+            "icon": "https://jeffersoncardoso.info/img/logo-brasao-prefeitura-canoas.png"
           },
           "to": "/topics/avisos"
         }, {

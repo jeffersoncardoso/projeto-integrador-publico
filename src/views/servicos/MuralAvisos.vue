@@ -36,7 +36,20 @@ export default {
   created() {
     if(Notification.permission == "granted") {
       this.$messaging.getToken().then(token => {
-        this.token = token; 
+        this.token = token;
+
+        this.$http.post("https://iid.googleapis.com/iid/v1/" + token + "/rel/topics/avisos", {}, {
+          headers: { Authorization: ENV['firebase'] }
+        }).then(() => {
+
+          this.$toasted.show("Pronto para receber notificações", { duration: 3000, position: 'bottom-center' })
+
+        }).catch((error) => {
+
+          this.$toasted.show("Erro: " + error.message, { duration: 3000, position: 'bottom-center' })
+
+        })
+
       })
     }
 
@@ -57,11 +70,6 @@ export default {
       this.$messaging.requestPermission().then(() => {
         this.$messaging.getToken().then((token) => {
           this.token = token;
-
-          this.$http.post("https://iid.googleapis.com/iid/v1/" + token + "/rel/topics/avisos", {}, {
-            headers: { Authorization: ENV['firebase']}
-          })
-
         })
         
       }).catch((err) => {

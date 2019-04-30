@@ -65,7 +65,16 @@ var config = {
 };
 firebase.initializeApp(config);
 
+firebase.messaging().onMessage((payload) => {
+  console.log(payload)
+  Vue.toasted.show(payload.notification.title, { 
+    href: payload.notification.click_action,
+    position: 'bottom-center', 
+    duration: 10000
+  })
+})
 Vue.prototype.$messaging = firebase.messaging();
+
 
 let vue = new Vue({
   router,
