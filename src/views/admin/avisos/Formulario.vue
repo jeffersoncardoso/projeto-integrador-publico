@@ -1,29 +1,31 @@
 <template>
     <v-form ref="form" row>
     <v-layout row wrap>
-        <v-flex lg12 md12 sm12>
-            <v-text-field v-model="aviso.assunto" label="Assunto" required autofocus></v-text-field>
-        </v-flex>
-    </v-layout>
-    <v-layout row wrap>
-        <v-flex lg12 md12 sm12>
-            <v-textarea v-model="aviso.descricao" label="Descrição" required counter></v-textarea>
-        </v-flex>
+        
     </v-layout>
 
-    <v-layout row wrap>
-        <v-flex lg12 md12 sm12>
-            <v-text-field v-model="aviso.url" label="Link de destino" required counter></v-text-field>
+    <v-layout row wrap mb-2>
+        <v-flex lg4 md4 sm4 xs12>
+            <v-date-picker locale="pt-BR" v-model="aviso.data" color="green lighten-1"></v-date-picker>
         </v-flex>
-    </v-layout>
 
-    <v-layout row wrap>
-        <v-flex>
-            <v-switch v-model="aviso.status" value="Ativo" label="Status"></v-switch>
+        <v-flex lg8 md8 sm8 xs12>
+            <v-layout row wrap>
+                <v-flex lg12 md12 sm12 xs12>
+                    <v-text-field v-model="aviso.assunto" label="Assunto" required autofocus></v-text-field>
+                </v-flex>
+                <v-flex lg12 md12 sm12 xs12>
+                    <v-text-field v-model="aviso.url" label="Link de destino" required counter></v-text-field>
+                </v-flex>
+                <v-flex lg12 md12 sm12 xs12>
+                    <v-switch v-model="aviso.status" value="Ativo" label="Status"></v-switch>
+                </v-flex>
+            </v-layout>  
         </v-flex>
-    </v-layout>
 
-    <vue-editor v-model="aviso.conteudo"></vue-editor>
+    </v-layout>
+    
+    <vue-editor v-model="aviso.descricao"></vue-editor>
 
     <div class="text-xs-right">
       <v-btn @click="save()" color="success">Salvar Aviso</v-btn>

@@ -9,28 +9,31 @@
         <v-list-tile :key="aviso.id">
           <v-list-tile-content>
             <v-list-tile-title><b>{{ aviso.assunto }}</b></v-list-tile-title>
-            <v-list-tile-sub-title class="text--primary">{{ aviso.descricao }}</v-list-tile-sub-title>
+            <v-list-tile-sub-title>30/04/2019</v-list-tile-sub-title>
           </v-list-tile-content>
           <v-list-tile-action>
-            <v-btn color="info">Ver mais</v-btn>
+            <v-btn @click="mostrarAviso(aviso)" color="info">Ver mais</v-btn>
           </v-list-tile-action>
         </v-list-tile>
         <v-divider v-if="index + 1 < avisos.length" :key="index"></v-divider>
       </template>
     </v-list>
 
+    <ModalAviso :aviso="avisoSelecionado" name="aviso" />
+
   </div>
 </template>
 
 <script>
 import { ENV } from "../../env.js"
-
+import ModalAviso from '../../components/ModalAviso'
 
 export default {
   data() {
     return {
       token: null,
-      avisos: []
+      avisos: [],
+      avisoSelecionado: null
     }
   },
   created() {
@@ -58,6 +61,10 @@ export default {
     })
   },
   methods: {
+    mostrarAviso(aviso) {
+      this.avisoSelecionado = aviso
+      this.$modal.show("aviso")
+    },
     habilitarNotificacoes() {
       if(this.token) {
         this.$messaging.deleteToken(this.token)
@@ -81,6 +88,9 @@ export default {
     notificationIcon() {
       return Notification.permission == "granted" && this.token != null ? 'notifications' : 'notifications_off';
     }
+  },
+  components: {
+    ModalAviso
   }
 }
 </script>

@@ -15,7 +15,6 @@
 
                 <v-list-tile-content>
                     <strong>{{ aviso.assunto }}</strong>
-                    <small class="text-truncate">{{ aviso.descricao }}</small>
                 </v-list-tile-content>
 
                 <v-list-tile-action title="Editar">
@@ -73,9 +72,9 @@ export default {
     enviarNotificacoes() {
         this.$http.post("https://fcm.googleapis.com/fcm/send", {
           "notification": {
-            "title": this.aviso.assunto,
-            "body": this.aviso.descricao,
-            "click_action": "http://localhost:8080/#/admin/avisos/" + this.aviso.id + "/editar",
+            "title": "Informação ao servidor",
+            "body": this.aviso.assunto,
+            "click_action": "https://jeffersoncardoso.info/img/logo-brasao-prefeitura-canoas.png",
             "icon": "https://jeffersoncardoso.info/img/logo-brasao-prefeitura-canoas.png"
           },
           "to": "/topics/avisos"
