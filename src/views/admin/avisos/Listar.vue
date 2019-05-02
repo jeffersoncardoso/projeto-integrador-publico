@@ -74,7 +74,7 @@ export default {
           "notification": {
             "title": "Informação ao servidor",
             "body": this.aviso.assunto,
-            "click_action": "https://jeffersoncardoso.info/img/logo-brasao-prefeitura-canoas.png",
+            "click_action": this.aviso.url,
             "icon": "https://jeffersoncardoso.info/img/logo-brasao-prefeitura-canoas.png"
           },
           "to": "/topics/avisos"

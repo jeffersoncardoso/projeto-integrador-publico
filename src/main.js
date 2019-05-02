@@ -77,7 +77,9 @@ try {
   Vue.prototype.$messaging = firebase.messaging();
     
 } catch (error) {
-  alert("Firebase não é suportado")
+  Vue.toasted.show("Esse navegador não suporta notificações", { 
+    position: 'bottom-center', duration: 2000
+  })
 }
 
 let vue = new Vue({
