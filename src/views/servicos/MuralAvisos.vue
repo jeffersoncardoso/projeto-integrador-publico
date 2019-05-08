@@ -9,7 +9,7 @@
         <v-list-tile :key="aviso.id">
           <v-list-tile-content>
             <v-list-tile-title><b>{{ aviso.assunto }}</b></v-list-tile-title>
-            <v-list-tile-sub-title>{{ aviso.data }}</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ formatarData(aviso.data) }}</v-list-tile-sub-title>
           </v-list-tile-content>
           <v-list-tile-action>
             <v-btn @click="mostrarAviso(aviso)" color="info">Ver mais</v-btn>
@@ -27,6 +27,8 @@
 <script>
 import { ENV } from "../../env.js"
 import ModalAviso from '../../components/ModalAviso'
+
+var moment = require('moment');
 
 export default {
   data() {
@@ -61,6 +63,9 @@ export default {
     })
   },
   methods: {
+    formatarData(data) {
+       return (data) ? moment(data).format('DD/MM/YYYY') : '';
+    },
     mostrarAviso(aviso) {
       this.avisoSelecionado = aviso
       this.$modal.show("aviso")

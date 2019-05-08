@@ -1,6 +1,6 @@
 {
-  "name": "projeto-integrador",
-  "short_name": "projeto-integrador",
+  "name": "Portal de Serviços",
+  "short_name": "Serviços",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
