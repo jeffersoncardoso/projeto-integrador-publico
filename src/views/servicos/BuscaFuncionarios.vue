@@ -103,7 +103,7 @@ export default {
                 params: { 
                     'nome': this.nome.trim(),
                     'secretaria': this.secretaria,
-                    'titulo': this.titulo.trim
+                    'titulo': this.titulo.trim()
                 }
             }).then((result) => {
                 this.funcionarios = result.data
