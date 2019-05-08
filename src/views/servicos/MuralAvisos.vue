@@ -9,7 +9,7 @@
         <v-list-tile :key="aviso.id">
           <v-list-tile-content>
             <v-list-tile-title><b>{{ aviso.assunto }}</b></v-list-tile-title>
-            <v-list-tile-sub-title>30/04/2019</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ aviso.data }}</v-list-tile-sub-title>
           </v-list-tile-content>
           <v-list-tile-action>
             <v-btn @click="mostrarAviso(aviso)" color="info">Ver mais</v-btn>

@@ -82,7 +82,7 @@ import { ENV } from "../../env.js"
 export default {
     data() {
         return {
-            nome: 'Jefferson',
+            nome: '',
             secretaria: '',
             titulo : '',
             funcionarios: [],
@@ -101,11 +101,10 @@ export default {
         buscar() {
             this.$http.get(ENV['api.buscar-funcionario'], {
                 params: { 
-                    'nome': this.nome,
+                    'nome': this.nome.trim(),
                     'secretaria': this.secretaria,
-                    'titulo': this.titulo
-                },
-                headers: { Authorization: 'Basic OmUzY2RjOTBjNmJhMTc1ZThjZWNiZDEwMDI0OTAzNTZl'}
+                    'titulo': this.titulo.trim
+                }
             }).then((result) => {
                 this.funcionarios = result.data
             })
