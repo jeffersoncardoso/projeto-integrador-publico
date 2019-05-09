@@ -5,13 +5,10 @@
         <v-list v-if="filtro.length > 0">
         <span v-for="usuario in filtro" :key="usuario.id">
             <v-list-tile>
-            <v-list-tile-avatar @click="mostrarInformacoes(usuario)">
-                <v-btn icon ripple> <v-icon x-large>{{ usuario.icone }}</v-icon> </v-btn>
-            </v-list-tile-avatar>
-
+              
             <v-list-tile-content>
-                <strong>{{ usuario.nome_abreviado }}</strong>
-                <small class="hidden-xs-only">{{ usuario.nome }}</small>
+                <strong>{{ usuario.cpf }}</strong>
+                <small>{{ buscarNomePerfil(usuario.idperfil) }}</small>
             </v-list-tile-content>
 
             <v-list-tile-action title="Editar">
@@ -57,15 +54,27 @@ export default {
     return {
       nome: '',
       usuario: null,
-      usuarios: []
+      usuarios: [],
+      perfis: []
     }
   },
   created() {
+    this.$http.get(ENV['api.perfil']).then((result) => {
+      this.perfis = result.data
+    })
+
     this.$http.get(ENV['api.usuario']).then((response) => { 
       this.usuarios = response.data
     })
   },
   methods: {
+    buscarNomePerfil(idPerfil) {
+      let perfil = this.perfis.find((perfil) => {
+        return perfil.id == idPerfil
+      })
+
+      if(perfil) return perfil.nome
+    },
     mostrarInformacoes(usuario) {
       this.usuario = usuario
       this.$nextTick(() => { this.$modal.show("mostrar") })
