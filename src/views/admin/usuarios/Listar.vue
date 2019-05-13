@@ -1,6 +1,6 @@
 <template>
     <div v-if="!isLoading">
-        <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
+        <v-text-field v-model="cpf" placeholder="Digite o cpf..." solo clearable append-icon="search"></v-text-field>
 
         <v-list v-if="filtro.length > 0">
         <span v-for="usuario in filtro" :key="usuario.id">
@@ -52,7 +52,7 @@ import ModalFechar from '../../../components/ModalFechar'
 export default {
   data() {
     return {
-      nome: '',
+      cpf: '',
       usuario: null,
       usuarios: [],
       perfis: []
@@ -92,12 +92,11 @@ export default {
   },
   computed: {
     filtro() {
-      if(this.nome == null || this.nome.length == 0) return this.usuarios;
+      if(this.cpf == null || this.cpf.trim().length == 0) return this.usuarios;
 
       return this.usuarios.filter((usuario) => {
-        let filtro = this.nome.toUpperCase().trim();
-        return usuario.nome.toUpperCase().includes(filtro) ||
-               usuario.nome_abreviado.toUpperCase().includes(filtro);
+        let filtro = this.cpf.trim()
+        return usuario.cpf.toString().includes(filtro)
       })
     }
   },
