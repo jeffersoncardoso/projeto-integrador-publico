@@ -67,10 +67,13 @@ try {
   firebase.initializeApp(config);
   
   firebase.messaging().onMessage((payload) => {
-    console.log(payload)
-    Vue.toasted.show(payload.notification.title, { 
-      href: payload.notification.click_action,
+    
+    Vue.toasted.show(payload.notification.title, {
       position: 'bottom-center', 
+      action : {
+        text : 'Abrir',
+        onClick : (e, toastObject) => { window.open(payload.notification.click_action, '_blank'); }
+      },
       duration: 10000
     })
   })
