@@ -50,7 +50,7 @@ export default {
             aviso: {
                 assunto: '',
                 descricao: '',
-                status: '',
+                status: 'Ativo',
             }
         }
     },

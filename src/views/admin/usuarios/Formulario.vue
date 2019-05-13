@@ -64,6 +64,12 @@ export default {
             }
         },
         save() {
+            if(this.usuario.cpf.length != 11){
+                alert("O CPF é inválido")
+                return
+            }
+                
+
             let promise
             if(this.estaEditando()) {
                 promise = this.$http.put(ENV['api.usuario'] + this.getId(), this.usuario)

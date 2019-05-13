@@ -12,7 +12,7 @@
             {{ formatarData(aviso.data) }}
           </v-card-text>
           <v-card-actions>
-            <v-btn @click="mostrarAviso(aviso)" color="info">Ver mais</v-btn>
+            <v-btn small @click="mostrarAviso(aviso)" color="info">Ver mais</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -48,8 +48,12 @@ export default {
        return (data) ? moment(data).format('DD/MM/YYYY') : '';
     },
     mostrarAviso(aviso) {
-      this.avisoSelecionado = aviso
-      this.$modal.show("aviso")
+      if(aviso.descricao.trim() == "") {
+        window.open(aviso.url, '_blank');
+      } else {
+        this.avisoSelecionado = aviso
+        this.$modal.show("aviso")
+      }
     },
     habilitarNotificacoes() {
       this.$messaging.requestPermission().then(() => {

@@ -34,7 +34,7 @@
         </v-btn>
 
         <ModalSimNao v-if="usuario" name="excluir" titulo="Excluir usuario" @sim="excluir">
-            Deseja excluir <b>"{{ this.usuario.nome }}"</b> da lista de usuarios?
+            Deseja excluir <b>"{{ this.usuario.cpf }}"</b> da lista de usuarios?
         </ModalSimNao>
 
         <ModalFechar v-if="usuario" name="mostrar" :titulo="usuario.nome">
