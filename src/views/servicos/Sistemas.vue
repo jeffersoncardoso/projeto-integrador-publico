@@ -1,29 +1,19 @@
 <template>
-  <div class="sistemas text-xs-center">
-    <h1 class="pb-3">Bem-vindo(a) {{ getNomeUsuario() }}</h1>
+  <layout-servicos :voltar="true">
+    <div class="sistemas text-xs-center">
+      <h2 class="pb-3">Selecione o sistema desejado</h2>
 
-    <h2 class="pb-3">Selecione o sistema desejado</h2>
+      <v-text-field flat v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
 
-    <v-text-field v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
+      <v-layout row wrap>
+        <v-flex md2 sm4 xs4 v-for="sistema in filterSistemas" :key="sistema.id" d-flex>
+          <card-sistema :sistema="sistema" @mostrar="mostrar(sistema)"></card-sistema>
+        </v-flex>
+      </v-layout>
 
-    <v-layout row wrap>
-      <v-flex md2 sm4 xs4 v-for="sistema in filterSistemas" :key="sistema.id" d-flex>
-        <v-card style="cursor:pointer;" @click="mostrar(sistema)">
-            <v-card-text class="px-0">
-              <v-icon color="blue-grey darken-3" large>{{ sistema.icone }}</v-icon> <br> {{ sistema.nome_abreviado }}
-            </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-
-    <ModalSistema :sistema="sistemaSelecionado" name="sistema" />
-
-    <br><br>
-
-    <v-btn fab dark color="teal" large :to="{ name: 'servicos' }">
-      <v-icon dark>arrow_back</v-icon>
-    </v-btn>
-  </div>
+      <ModalSistema :sistema="sistemaSelecionado" name="sistema" />
+    </div>
+  </layout-servicos>
 </template>
 
 <script>

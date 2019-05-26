@@ -1,21 +1,14 @@
 <template>
-  <div class="servicos text-xs-center">
-    <h1 class="pb-3">Bem-vindo(a) {{ getNomeUsuario() }}</h1>
-
-    <h2 class="pb-3">Selecione o serviço desejado</h2>
-
-    <v-text-field v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
-
-    <v-layout row wrap>
-      <v-flex md2 sm3 xs4 v-for="servico in filtro" :key="servico.id" d-flex>
-        <v-card :to="{ 'path' : servico.link }">
-            <v-card-text class="px-0 text-xs-center">
-              <v-icon color="blue-grey darken-3" large>{{ servico.icone }}</v-icon> <br> {{ servico.nome }}
-            </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </div>
+  <layout-servicos :logo="true">
+    <div class="servicos text-xs-center pt-2">
+      <v-text-field flat v-model="nome" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
+      <v-layout row wrap>
+        <v-flex flat md2 sm3 xs4 v-for="servico in filtro" :key="servico.id" d-flex>
+          <card-servico :servico="servico"></card-servico>
+        </v-flex>
+      </v-layout>
+    </div>
+  </layout-servicos>
 </template>
 
 <script>

@@ -1,5 +1,6 @@
 <template>
-    <div v-if="!isLoading">
+    <layout-admin>
+      <div v-if="!isLoading">
         <v-text-field v-model="assunto" placeholder="Digite o assunto..." solo clearable append-icon="search"></v-text-field>
 
         <v-list v-if="filtro.length > 0">
@@ -47,7 +48,8 @@
             Deseja enviar notificações para <b>TODOS OS SERVIDORES</b> de <b>"{{ this.aviso.assunto }}"</b>?
         </ModalSimNao>
 
-    </div>
+      </div>
+    </layout-admin>
 </template>
 
 <script>

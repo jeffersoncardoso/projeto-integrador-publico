@@ -1,29 +1,19 @@
 <template>
-  <div class="utilitarios text-xs-center">
-    <h1 class="pb-3">Bem-vindo(a) {{ getNomeUsuario() }}</h1>
+  <layout-servicos :voltar="true">
+    <div class="utilitarios text-xs-center">
+      <h2 class="pb-3">Selecione o utilitário desejado</h2>
 
-    <h2 class="pb-3">Selecione o utilitário desejado</h2>
+      <v-text-field flat v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
 
-    <v-text-field v-model="name" placeholder="Digite o nome..." solo clearable append-icon="search"></v-text-field>
+      <v-layout row wrap>
+        <v-flex md2 sm4 xs4 d-flex v-for="utilitario in filterUtilitarios" :key="utilitario.id">
+          <card-utilitario :utilitario="utilitario" @mostrar="mostrar(utilitario)"></card-utilitario>
+        </v-flex>
+      </v-layout>
 
-    <v-layout row wrap>
-      <v-flex md2 sm4 xs4 d-flex v-for="utilitario in filterUtilitarios" :key="utilitario.id">
-        <v-card style="cursor:pointer;" @click="mostrar(utilitario)">
-            <v-card-text class="px-0">
-              <v-icon color="blue-grey darken-3" large>{{ utilitario.icone }}</v-icon> <br> {{ utilitario.nome }}
-            </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-
-    <ModalUtilitario :utilitario="utilitarioSelecionado" name="utilitario" />
-
-    <br><br>
-
-    <v-btn fab dark color="teal" large :to="{ name: 'servicos' }">
-      <v-icon dark>arrow_back</v-icon>
-    </v-btn>
-  </div>
+      <ModalUtilitario :utilitario="utilitarioSelecionado" name="utilitario" />
+    </div>
+  </layout-servicos>
 </template>
 
 <script>

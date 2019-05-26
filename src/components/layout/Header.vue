@@ -1,6 +1,5 @@
 <template>
-  <!-- <v-app light> -->
-    <!-- <v-toolbar color="teal" dark>
+    <v-toolbar color="teal" dark>
       <v-toolbar-title>
         <v-btn flat :to="{name: 'servicos'}">Serviços</v-btn>
       </v-toolbar-title>
@@ -20,44 +19,14 @@
         <v-btn :to="{name: 'admin.utilitarios'}" flat>Utilitários</v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    
-    <v-progress-linear v-if="isLoading" height="7" style="margin: 0px" color="green" :indeterminate="true"></v-progress-linear>
-    <v-progress-linear v-else height="7" style="margin: 0px" color="light" :indeterminate="false"></v-progress-linear>
-
-    <v-content>
-      <v-container grid-list-md> -->
-        <router-view/>
-      <!-- </v-container>
-    </v-content>
-
-    <v-footer class="pa-3">
-      <img width="80" alt="Prefeitura de Canoas" src="./assets/logo_canoastec.png">
-      <v-spacer></v-spacer>
-      <div>&copy; {{ new Date().getFullYear() }}</div>
-    </v-footer>
-  </v-app> -->
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  beforeCreate(){
-    
-  },
-  components: {
-  },
-  data () {
-    return {
-      //
-    }
-  }
+
 }
 </script>
 
 <style>
-  html {
-    overflow-y:auto;
-  }
-</style>
 
+</style>

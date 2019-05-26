@@ -1,23 +1,25 @@
 <template>
-  <v-form ref="form">
-    <v-layout row wrap>
-      <v-flex lg6 md6 sm12 xs12>
-        <v-text-field label="Nome" v-model="utilitario.nome" autofocus></v-text-field>
-      </v-flex>
-      <v-flex lg4 md4 sm10 xs10>
-        <v-select v-model="utilitario.icone" :items="icones" label="Ícone" required value="apps"></v-select>
-      </v-flex>
-      <v-flex lg2 md2 sm2 xs2 mt-3>
-        <v-icon large>{{ utilitario.icone}}</v-icon>
-      </v-flex>
-    </v-layout>
+  <layout-admin>
+    <v-form ref="form">
+      <v-layout row wrap>
+        <v-flex lg6 md6 sm12 xs12>
+          <v-text-field label="Nome" v-model="utilitario.nome" autofocus></v-text-field>
+        </v-flex>
+        <v-flex lg4 md4 sm10 xs10>
+          <v-select v-model="utilitario.icone" :items="icones" label="Ícone" required value="apps"></v-select>
+        </v-flex>
+        <v-flex lg2 md2 sm2 xs2 mt-3>
+          <v-icon large>{{ utilitario.icone}}</v-icon>
+        </v-flex>
+      </v-layout>
 
-    <vue-editor v-model="utilitario.descricao"></vue-editor>
+      <vue-editor v-model="utilitario.descricao"></vue-editor>
 
-    <div class="text-xs-right">
-      <v-btn @click="save()" color="success">Salvar Utilitário</v-btn>
-    </div>
-  </v-form>
+      <div class="text-xs-right">
+        <v-btn @click="save()" color="success">Salvar Utilitário</v-btn>
+      </div>
+    </v-form>
+  </layout-admin>
 </template>
 
 <script>

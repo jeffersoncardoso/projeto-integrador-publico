@@ -1,47 +1,49 @@
 <template>
-    <div v-if="!isLoading">
-        <v-text-field v-model="cpf" placeholder="Digite o cpf..." solo clearable append-icon="search"></v-text-field>
+    <layout-admin>
+      <div v-if="!isLoading">
+          <v-text-field v-model="cpf" placeholder="Digite o cpf..." solo clearable append-icon="search"></v-text-field>
 
-        <v-list v-if="filtro.length > 0">
-        <span v-for="usuario in filtro" :key="usuario.id">
-            <v-list-tile>
-              
-            <v-list-tile-content>
-                <strong>{{ usuario.cpf }}</strong>
-                <small>{{ buscarNomePerfil(usuario.idperfil) }}</small>
-            </v-list-tile-content>
+          <v-list v-if="filtro.length > 0">
+          <span v-for="usuario in filtro" :key="usuario.id">
+              <v-list-tile>
+                
+              <v-list-tile-content>
+                  <strong>{{ usuario.cpf }}</strong>
+                  <small>{{ buscarNomePerfil(usuario.idperfil) }}</small>
+              </v-list-tile-content>
 
-            <v-list-tile-action title="Editar">
-                <v-btn :to="{ name: 'admin.usuarios.editar', params: { id: usuario.id }}" icon ripple> <v-icon small>edit</v-icon> </v-btn>
-            </v-list-tile-action>
+              <v-list-tile-action title="Editar">
+                  <v-btn :to="{ name: 'admin.usuarios.editar', params: { id: usuario.id }}" icon ripple> <v-icon small>edit</v-icon> </v-btn>
+              </v-list-tile-action>
 
-            <v-list-tile-action title="Excluir" @click="confirmarExcluir(usuario)">
-                <v-btn icon ripple> <v-icon small>clear</v-icon> </v-btn>
-            </v-list-tile-action>
+              <v-list-tile-action title="Excluir" @click="confirmarExcluir(usuario)">
+                  <v-btn icon ripple> <v-icon small>clear</v-icon> </v-btn>
+              </v-list-tile-action>
 
-            </v-list-tile>
+              </v-list-tile>
 
-            <v-divider></v-divider>
+              <v-divider></v-divider>
 
-        </span>
-        <h4 class="text-xs-right pr-2 pt-2">{{ filtro.length }} usuarios encontrados</h4>
-        </v-list>
+          </span>
+          <h4 class="text-xs-right pr-2 pt-2">{{ filtro.length }} usuarios encontrados</h4>
+          </v-list>
 
-        <v-alert v-else :value="true" type="info"> Nenhum usuario encontrado. </v-alert>
+          <v-alert v-else :value="true" type="info"> Nenhum usuario encontrado. </v-alert>
 
-        <v-btn class="mb-5" :to="{ name: 'admin.usuarios.cadastrar' }" color="teal" dark absolute bottom right fab large>
-        <v-icon>add</v-icon>
-        </v-btn>
+          <v-btn class="mb-5" :to="{ name: 'admin.usuarios.cadastrar' }" color="teal" dark absolute bottom right fab large>
+          <v-icon>add</v-icon>
+          </v-btn>
 
-        <ModalSimNao v-if="usuario" name="excluir" titulo="Excluir usuario" @sim="excluir">
-            Deseja excluir <b>"{{ this.usuario.cpf }}"</b> da lista de usuarios?
-        </ModalSimNao>
+          <ModalSimNao v-if="usuario" name="excluir" titulo="Excluir usuario" @sim="excluir">
+              Deseja excluir <b>"{{ this.usuario.cpf }}"</b> da lista de usuarios?
+          </ModalSimNao>
 
-        <ModalFechar v-if="usuario" name="mostrar" :titulo="usuario.nome">
-            Informações do usuário
-        </ModalFechar>
+          <ModalFechar v-if="usuario" name="mostrar" :titulo="usuario.nome">
+              Informações do usuário
+          </ModalFechar>
 
-    </div>
+      </div>
+    </layout-admin>
 </template>
 
 <script>

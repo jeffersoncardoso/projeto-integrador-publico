@@ -8,6 +8,7 @@ import Sistemas from './views/servicos/Sistemas.vue'
 import MuralAvisos from './views/servicos/MuralAvisos.vue'
 import Utilitarios from './views/servicos/Utilitarios.vue'
 import BuscaFuncionarios from './views/servicos/BuscaFuncionarios.vue'
+import MeusDados from './views/servicos/MeusDados.vue'
 
 import { default as AdminFormSistemas } from './views/admin/sistemas/Formulario.vue'
 import { default as AdminListarSistemas } from './views/admin/sistemas/Listar.vue'
@@ -35,6 +36,7 @@ export default new Router({
     { path: '/servicos/troca-senha', name: 'troca-senha', component: TrocaSenha },
     { path: '/servicos/sistemas', name: 'sistemas', component: Sistemas },
     { path: '/servicos/utilitarios', name: 'utilitarios', component: Utilitarios },
+    { path: '/servicos/meus-dados', name: 'meus-dados', component: MeusDados },
 
     { path: '/admin', name: 'admin', component: Servicos },
 

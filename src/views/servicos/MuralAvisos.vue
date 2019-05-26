@@ -1,26 +1,25 @@
 <template>
-  <div>
-    <h2 class="text-xs-center">Informação ao servidor
-      <v-btn class="mb-3" @click="habilitarNotificacoes()" icon><v-icon large>{{ notificationIcon }}</v-icon></v-btn>
-    </h2>
+  <layout-servicos :voltar="true">
+    <div>
+      <h2 class="text-xs-center">Informação ao servidor
+        <v-btn class="mb-3" @click="habilitarNotificacoes()" icon><v-icon large>{{ notificationIcon }}</v-icon></v-btn>
+      </h2>
 
-    <v-layout row wrap>
-      <v-flex lg4 md4 sm4 v-for="(aviso) in avisos" :key="aviso.id" d-flex>
-        <v-card>
-          <v-card-text>
-            <b>{{ aviso.assunto }}</b> <br>
-            {{ formatarData(aviso.data) }}
-          </v-card-text>
-          <v-card-actions>
-            <v-btn small @click="mostrarAviso(aviso)" color="info">Ver mais</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-flex>
-    </v-layout>
+      <v-layout row wrap>
+        <v-flex lg4 md4 sm4 v-for="(aviso) in avisos" :key="aviso.id" d-flex>
+          <v-card flat @click="mostrarAviso(aviso)" style="cursor:pointer;">
+            <v-card-text>
+              <b>{{ aviso.assunto }}</b> <br>
+              {{ formatarData(aviso.data) }}
+            </v-card-text>
+          </v-card>
+        </v-flex>
+      </v-layout>
 
-    <ModalAviso :aviso="avisoSelecionado" name="aviso" />
+      <ModalAviso :aviso="avisoSelecionado" name="aviso" />
 
-  </div>
+    </div>
+  </layout-servicos>
 </template>
 
 <script>
