@@ -9,8 +9,8 @@
 
       <v-layout>
         <v-flex>
-            <v-text-field v-model="usuario" label="Usuário" required></v-text-field>
-            <v-text-field v-model="senha" type="password" label="Senha" required></v-text-field>
+            <v-text-field solo flat v-model="usuario" label="Usuário" required></v-text-field>
+            <v-text-field solo flat v-model="senha" type="password" label="Senha" required></v-text-field>
 
             <v-btn @click="login" color="info">Entrar</v-btn>
         </v-flex>
