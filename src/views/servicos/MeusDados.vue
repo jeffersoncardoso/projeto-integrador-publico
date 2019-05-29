@@ -39,7 +39,7 @@
       </v-flex>
       <v-flex md2>
         <label for="cep">CEP</label>
-        <v-text-field solo flat v-model="usuario.cep"></v-text-field>
+        <v-text-field :mask="'#####-###'" solo flat v-model="usuario.cep"></v-text-field>
       </v-flex>
     </v-layout>
 
@@ -54,7 +54,7 @@
       </v-flex>
       <v-flex md2>
         <label for="ramal">Ramal</label>
-        <v-text-field solo flat v-model="usuario.ramal"></v-text-field>
+        <v-text-field :mask="'####'" solo flat v-model="usuario.ramal"></v-text-field>
       </v-flex>
     </v-layout>
 
