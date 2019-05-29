@@ -17,12 +17,12 @@ export default {
     return {
       nome: '',
       servicos: [
-        { nome: 'Troca de senha', icone: 'vpn_key', link: 'servicos/troca-senha' },
-        { nome: 'Buscar servidores', icone: 'search', link: 'servicos/busca-funcionarios' },
-        { nome: 'Mural de avisos', icone: 'info', link: 'servicos/mural-avisos' },
-        { nome: 'Meus dados', icone: 'person', link: 'servicos/meus-dados' },
-        { nome: 'Sistemas', icone: 'apps', link: 'servicos/sistemas'},
-        { nome: 'Utilitários', icone: 'help', link: 'servicos/utilitarios'}
+        { nome: 'Troca de senha', icone: 'vpn_key', link: '/troca-senha' },
+        { nome: 'Buscar servidores', icone: 'search', link: '/busca-funcionarios' },
+        { nome: 'Mural de avisos', icone: 'info', link: '/mural-avisos' },
+        { nome: 'Meus dados', icone: 'person', link: '/meus-dados' },
+        { nome: 'Sistemas', icone: 'apps', link: '/sistemas'},
+        { nome: 'Utilitários', icone: 'help', link: '/utilitarios'}
       ]
     }
   },

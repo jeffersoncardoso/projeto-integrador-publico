@@ -8,7 +8,8 @@
                 <h2 class="text-xs-center" style="color: #2FA0AA;">Portal de Serviços</h2>
             </v-flex>
             <v-flex class="text-xs-right" md8>
-                <h4 style="color: #696969">Recursos Humanos: <v-icon>phone</v-icon>7602</h4>
+                <v-btn to="/admin" color="primary">Administração</v-btn>
+                <!-- <h4 style="color: #696969">Recursos Humanos: <v-icon>phone</v-icon>7602</h4> -->
                 <h4 style="color: #696969">Atendimento CANOASTEC: <v-icon>phone</v-icon>1700</h4>
             </v-flex>
         </v-layout>

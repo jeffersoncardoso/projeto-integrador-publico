@@ -44,7 +44,7 @@ Vue.mixin({
 axios.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
-  Vue.toasted.show(error.message, { position: 'bottom-center', duration: 2000 })
+  // Vue.toasted.show(error.message, { position: 'bottom-center', duration: 2000 })
   return Promise.reject(error);
 });
 

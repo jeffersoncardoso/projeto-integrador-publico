@@ -8,7 +8,7 @@
               <v-list-tile>
                 
               <v-list-tile-content>
-                  <strong>{{ usuario.cpf }}</strong>
+                  <strong>{{ usuario.login }}</strong>
                   <small>{{ buscarNomePerfil(usuario.idperfil) }}</small>
               </v-list-tile-content>
 
@@ -35,7 +35,7 @@
           </v-btn>
 
           <ModalSimNao v-if="usuario" name="excluir" titulo="Excluir usuario" @sim="excluir">
-              Deseja excluir <b>"{{ this.usuario.cpf }}"</b> da lista de usuarios?
+              Deseja excluir <b>"{{ this.usuario.login }}"</b> da lista de usuarios?
           </ModalSimNao>
 
           <ModalFechar v-if="usuario" name="mostrar" :titulo="usuario.nome">
@@ -94,11 +94,11 @@ export default {
   },
   computed: {
     filtro() {
-      if(this.cpf == null || this.cpf.trim().length == 0) return this.usuarios;
+      if(this.login == null || this.login.trim().length == 0) return this.usuarios;
 
       return this.usuarios.filter((usuario) => {
-        let filtro = this.cpf.trim()
-        return usuario.cpf.toString().includes(filtro)
+        let filtro = this.login.trim()
+        return usuario.login.toString().includes(filtro)
       })
     }
   },

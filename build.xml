@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <project name="servicos" default="zip" basedir="." xmlns:if="ant:if" xmlns:unless="ant:unless">
+    <property environment="env"/>
+
+    <target name="zip">
+        <defaultexcludes default="true"/>
+        <zip destfile="bin/servicos.zip" basedir="./dist" />
+    </target>
+</project>

@@ -10,15 +10,13 @@ import Utilitarios from './views/servicos/Utilitarios.vue'
 import BuscaFuncionarios from './views/servicos/BuscaFuncionarios.vue'
 import MeusDados from './views/servicos/MeusDados.vue'
 
+import { default as Admin } from './views/admin/Admin.vue'
 import { default as AdminFormSistemas } from './views/admin/sistemas/Formulario.vue'
 import { default as AdminListarSistemas } from './views/admin/sistemas/Listar.vue'
-
 import { default as AdminFormUtilitarios } from './views/admin/utilitarios/Formulario.vue'
 import { default as AdminListarUtilitarios } from './views/admin/utilitarios/Listar.vue'
-
 import { default as AdminFormUsuarios } from './views/admin/usuarios/Formulario.vue'
 import { default as AdminListarUsuarios } from './views/admin/usuarios/Listar.vue'
-
 import { default as AdminFormAvisos } from './views/admin/avisos/Formulario.vue'
 import { default as AdminListarAvisos } from './views/admin/avisos/Listar.vue'
 
@@ -28,18 +26,16 @@ export default new Router({
   mode: 'hash',
   base: process.env.BASE_URL,
   routes: [
-    { path: '/', name: 'home', component: Login },
     { path: '/login', name: 'login', component: Login },
-    { path: '/servicos', name: 'servicos', component: Servicos },
-    { path: '/servicos/busca-funcionarios', name: 'busca-funcionarios', component: BuscaFuncionarios },
-    { path: '/servicos/mural-avisos', name: 'mural-avisos', component: MuralAvisos },
-    { path: '/servicos/troca-senha', name: 'troca-senha', component: TrocaSenha },
-    { path: '/servicos/sistemas', name: 'sistemas', component: Sistemas },
-    { path: '/servicos/utilitarios', name: 'utilitarios', component: Utilitarios },
-    { path: '/servicos/meus-dados', name: 'meus-dados', component: MeusDados },
+    { path: '/', name: 'servicos', component: Servicos },
+    { path: '/busca-funcionarios', name: 'busca-funcionarios', component: BuscaFuncionarios },
+    { path: '/mural-avisos', name: 'mural-avisos', component: MuralAvisos },
+    { path: '/troca-senha', name: 'troca-senha', component: TrocaSenha },
+    { path: '/sistemas', name: 'sistemas', component: Sistemas },
+    { path: '/utilitarios', name: 'utilitarios', component: Utilitarios },
+    { path: '/meus-dados', name: 'meus-dados', component: MeusDados },
 
-    { path: '/admin', name: 'admin', component: Servicos },
-
+    { path: '/admin', name: 'admin', component: Admin },
     { path: '/admin/usuarios', name: 'admin.usuarios', component: AdminListarUsuarios },
     { path: '/admin/usuarios/cadastrar', name: 'admin.usuarios.cadastrar', component: AdminFormUsuarios },
     { path: '/admin/usuarios/:id/editar', name: 'admin.usuarios.editar', component: AdminFormUsuarios },

@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { ENV } from "../env.js"
+
 export default {
   data(){
     return {
@@ -34,8 +36,24 @@ export default {
   },
   methods: {
     login() {
-      localStorage.setItem("nome", this.usuario);
-      this.$router.push({'name': 'servicos'})
+      this.$http.post(ENV['api.login'], {
+        'username' : this.usuario,
+        'password': this.senha
+      }, {
+        headers: { Authorization: ENV['apikey'] }
+      }).then((response) => {
+        
+        sessionStorage.setItem("usuario", JSON.stringify(response.data.user));
+
+        this.$router.push({'name': 'servicos'})
+
+      }).catch((error) => {
+        
+        if(error.response.status == 422) {
+          this.$toasted.show(error.response.data.error, { position: 'bottom-center', duration: 2000 })
+        }
+        
+      });
     }
   }
 }

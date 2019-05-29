@@ -3,13 +3,13 @@
         <span class="busca-funcionarios">
             <v-layout row wrap>
                 <v-flex lg6 md6 sm6 xs12>
-                    <v-text-field v-model="nome" placeholder="Digite o nome do funcionário" solo clearable append-icon="person"></v-text-field>
+                    <v-text-field v-model="nome" placeholder="Digite o nome do funcionário" flat solo clearable append-icon="person"></v-text-field>
                 </v-flex>
                 <v-flex lg3 md3 sm3 xs6>
-                    <v-autocomplete v-model="secretaria" :items="secretarias" solo placeholder="Secretaria" clearable></v-autocomplete>
+                    <v-autocomplete v-model="secretaria" :items="secretarias" solo flat placeholder="Secretaria" clearable></v-autocomplete>
                 </v-flex>
                 <v-flex lg3 md3 sm3 xs6>
-                    <v-autocomplete v-model="titulo" item-value="valor" item-text="descricao" :items="titulos" solo placeholder="Cargo" clearable></v-autocomplete>
+                    <v-autocomplete v-model="titulo" item-value="valor" item-text="descricao" :items="titulos" solo flat placeholder="Cargo" clearable></v-autocomplete>
                 </v-flex>
                 <v-flex lg12 md12 sm12 xs12>
                     <v-btn @click="buscar" color="teal" large block dark><v-icon right>search</v-icon> Buscar</v-btn>

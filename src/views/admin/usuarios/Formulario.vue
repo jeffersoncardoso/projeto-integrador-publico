@@ -3,7 +3,7 @@
         <v-form ref="form" row>
             <v-layout row wrap>
                 <v-flex lg5 md5 sm5>
-                    <v-text-field v-model="usuario.cpf" label="CPF" placeholder="Digite o CPF do usuário" required autofocus></v-text-field>
+                    <v-text-field v-model="usuario.login" label="Login" placeholder="Digite o Login do usuário" required autofocus></v-text-field>
                 </v-flex>
                 <v-flex lg7 md7 sm7>
                     <v-text-field v-model="nome" label="Nome" disabled></v-text-field>
@@ -28,7 +28,7 @@ export default {
     data() {
         return {
             usuario: {
-                cpf: '',
+                login: '',
                 idperfil: ''
             },
             nome: '',
@@ -56,20 +56,20 @@ export default {
             return (this.$router.currentRoute.name == 'admin.usuarios.editar');
         },
         buscarNome() {
-            if(this.usuario.cpf.length == 11) {
-                this.$http.get(ENV['api.buscar-cpf'] + '/' + this.usuario.cpf, {
-                    headers: { Authorization: 'Basic OmUzY2RjOTBjNmJhMTc1ZThjZWNiZDEwMDI0OTAzNTZl' }
-                }).then(result => {
-                    if(result.data)
-                        this.nome = result.data.nome
-                })
-            }
+            // if(this.usuario.login.length == 11) {
+            //     this.$http.get(ENV['api.buscar-cpf'] + '/' + this.usuario.login, {
+            //         headers: { Authorization: 'Basic OmUzY2RjOTBjNmJhMTc1ZThjZWNiZDEwMDI0OTAzNTZl' }
+            //     }).then(result => {
+            //         if(result.data)
+            //             this.nome = result.data.nome
+            //     })
+            // }
         },
         save() {
-            if(this.usuario.cpf.length != 11){
-                alert("O CPF é inválido")
-                return
-            }
+            // if(this.usuario.login.length != 11){
+            //     alert("O CPF é inválido")
+            //     return
+            // }
                 
 
             let promise
@@ -88,7 +88,7 @@ export default {
         }
     },
     watch: {    
-        "usuario.cpf" : function() {
+        "usuario.login" : function() {
             this.buscarNome()
         }
     }
