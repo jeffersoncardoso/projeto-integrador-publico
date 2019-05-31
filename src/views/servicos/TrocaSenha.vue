@@ -4,7 +4,7 @@
     
     <v-layout row wrap>
       <v-flex>
-        <v-password v-model="senha" label="Digite sua senha atual" hint="Pelo menos 8 caracteres" counter></v-password>
+        <v-password :error-messages="erroSenha" @blur="verificarSenha()" v-model="senha" label="Digite sua senha atual" hint="Pelo menos 8 caracteres" counter></v-password>
       </v-flex>
     </v-layout>
     
@@ -13,12 +13,12 @@
         <v-password v-model="nova" label="Nova senha" hint="Pelo menos 8 caracteres" counter></v-password>
       </v-flex>
       <v-flex md6 sm6>
-        <v-password v-model="repetir" label="Repetir senha" hint="Pelo menos 8 caracteres" counter></v-password>
+        <v-password :error-messages="this.nova != this.repetir ? ['Senhas não conferem'] : []" v-model="repetir" label="Repetir senha" hint="Pelo menos 8 caracteres" counter></v-password>
       </v-flex>
     </v-layout>
 
     <v-alert outline :value="true" type="info"> 
-      A senha deve cumprir três das quatro categorias a seguir:
+      A senha deve ter no mínimo 8 caracteres e cumprir três das quatro categorias a seguir:
       <ul>
         <div>
           Caracteres maiúsculos (A-Z)
@@ -56,12 +56,30 @@ export default {
   data() {
     return {
       usuario: {},
+      
       senha: '',
+      erroSenha: [],
+
       nova: '',
       repetir: ''
     }
   },
   methods: {
+    verificarNovaSenha() {
+
+    },
+    verificarSenha() {
+      this.$http.post(ENV['api.login'], {
+        'username' : this.usuario.login,
+        'password': this.senha
+      }, {
+        headers: { Authorization: ENV['apikey'] }
+      }).then(result => {
+        this.erroSenha = []
+      }).catch((error) => {
+        this.erroSenha = [error.response.data.error]
+      })
+    },
     possuiMaiusculos(senha) {
       const regex = /[A-Z]/;
       return regex.test(senha);
@@ -85,7 +103,7 @@ export default {
       categorias += this.possuiNumeros(this.nova);
       categorias += this.possuiCaracteresEspeciais(this.nova);
 
-      return categorias < 3 || this.nova.length < 8;
+      return categorias < 3 || this.nova.length < 8 || this.nova != this.repetir;
     },
     trocarSenha() {
       let url = ENV['api.senha'].replace("{login}", this.usuario.login)
@@ -97,6 +115,7 @@ export default {
         headers: { Authorization: ENV['apikey'] }
       }).then(result => {
         if(result.data.success) {
+          this.$toasted.show("Senha alterada com sucesso", { position: 'bottom-center', duration: 2000 })
           this.$router.push({'name': 'servicos'})
         }
       }).catch(error => {

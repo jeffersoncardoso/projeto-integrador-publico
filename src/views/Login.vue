@@ -1,16 +1,10 @@
 <template>
   <layout-login>
     <div class="login text-xs-center">
-      <v-layout>
-        <v-flex>
-          <v-icon icon="users" color="#006b85" x-large>person_pin</v-icon>
-        </v-flex>
-      </v-layout>
-
-      <v-layout>
-        <v-flex>
-            <v-text-field solo flat v-model="usuario" label="Usuário" required></v-text-field>
-            <v-text-field solo flat v-model="senha" type="password" label="Senha" required></v-text-field>
+      <v-layout justify-center>
+        <v-flex md6 xs12>
+            <v-text-field solo flat v-model="usuario" label="Digite usuário de rede" required></v-text-field>
+            <v-text-field solo flat v-model="senha" type="password" label="Digite sua senha" required @keyup.enter="login()"></v-text-field>
 
             <v-btn @click="login" color="info">Entrar</v-btn>
         </v-flex>

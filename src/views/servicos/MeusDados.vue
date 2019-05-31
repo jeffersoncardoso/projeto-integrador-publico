@@ -46,11 +46,11 @@
     <v-layout row wrap>
       <v-flex>
         <label for="celular">Celular</label>
-        <v-text-field solo flat v-model="usuario.celular"></v-text-field>
+        <v-text-field :mask="'(##) #####-####'"  solo flat v-model="usuario.celular"></v-text-field>
       </v-flex>
       <v-flex md4>
         <label for="telefone">Telefone</label>
-        <v-text-field solo flat v-model="usuario.telefone"></v-text-field>
+        <v-text-field :mask="'(##) ####-####'" solo flat v-model="usuario.telefone"></v-text-field>
       </v-flex>
       <v-flex md2>
         <label for="ramal">Ramal</label>

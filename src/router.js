@@ -22,7 +22,7 @@ import { default as AdminListarAvisos } from './views/admin/avisos/Listar.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'hash',
   base: process.env.BASE_URL,
   routes: [
@@ -57,3 +57,15 @@ export default new Router({
     { path: '/admin/utilitarios/listar', name: 'admin.utilitarios.listar', component: AdminListarUtilitarios },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if(to.fullPath === '/login')
+    return next();
+  
+  if(sessionStorage.getItem("usuario") === null)
+    return next('/login');
+
+  return next();
+});
+
+export default router

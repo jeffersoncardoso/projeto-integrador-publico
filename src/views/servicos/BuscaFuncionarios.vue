@@ -1,15 +1,19 @@
 <template>
     <layout-servicos :voltar="true">
         <span class="busca-funcionarios">
+            <h2 class="text-xs-center" style="color: #555">
+                Localize com facilidade seus colegas de trabalho, pesquisando por nome, secretaria ou cargo.
+            </h2>
+
             <v-layout row wrap>
                 <v-flex lg6 md6 sm6 xs12>
-                    <v-text-field v-model="nome" placeholder="Digite o nome do funcionário" flat solo clearable append-icon="person"></v-text-field>
+                    <v-text-field @keyup.enter="buscar" v-model="nome" placeholder="Digite o nome do funcionário" flat solo clearable append-icon="person"></v-text-field>
                 </v-flex>
                 <v-flex lg3 md3 sm3 xs6>
-                    <v-autocomplete v-model="secretaria" :items="secretarias" solo flat placeholder="Secretaria" clearable></v-autocomplete>
+                    <v-autocomplete @keyup.enter="buscar" v-model="secretaria" :items="secretarias" solo flat placeholder="Secretaria" clearable></v-autocomplete>
                 </v-flex>
                 <v-flex lg3 md3 sm3 xs6>
-                    <v-autocomplete v-model="titulo" item-value="valor" item-text="descricao" :items="titulos" solo flat placeholder="Cargo" clearable></v-autocomplete>
+                    <v-autocomplete @keyup.enter="buscar" v-model="titulo" item-value="valor" item-text="descricao" :items="titulos" solo flat placeholder="Cargo" clearable></v-autocomplete>
                 </v-flex>
                 <v-flex lg12 md12 sm12 xs12>
                     <v-btn @click="buscar" color="teal" large block dark><v-icon right>search</v-icon> Buscar</v-btn>
@@ -28,12 +32,12 @@
                         <v-layout row wrap>
                             <v-flex lg9 md9 sm9 xs12>
                                 <div>
-                                    <h3 style="text-transform: uppercase;">
+                                    <h3 class="text-uppercase">
                                         {{ funcionario.nome }} 
                                     </h3>
-                                    <h4 style="text-transform: uppercase;">
-                                        {{ (funcionario.secretaria.trim()) ? funcionario.secretaria : "" }}
-                                        {{ (funcionario.cargo.trim()) ? " - " + funcionario.cargo : "" }}
+                                    <h4 class="text-uppercase">
+                                        {{ (funcionario.secretaria) ? funcionario.secretaria : "" }}
+                                        {{ (funcionario.cargo) ? " - " + funcionario.cargo : "" }}
                                     </h4>
                                     <h5>{{ funcionario.email }}</h5>
                                 </div>
@@ -42,13 +46,13 @@
                                 <div>
                                     <span>
                                         <div>
-                                            Ramal: <b>{{ (funcionario.ramal && funcionario.ramal.trim().length > 0) ?  funcionario.ramal : "Não informado" }}</b>
+                                            Ramal: <b>{{ (funcionario.ramal && funcionario.ramal.length > 0) ?  funcionario.ramal : "Não informado" }}</b>
                                         </div>
                                         <div>
-                                            Telefone: <b>{{ funcionario.telefone && funcionario.telefone.trim().length > 0 ? funcionario.telefone : "Não informado" }}</b>
+                                            Telefone: <b>{{ funcionario.telefone && funcionario.telefone.length > 0 ? funcionario.telefone : "Não informado" }}</b>
                                         </div>
                                         <div>
-                                            Celular: <b>{{ funcionario.celular && funcionario.celular.trim().length > 0 ? funcionario.celular : "Não informado" }}</b>
+                                            Celular: <b>{{ funcionario.celular && funcionario.celular.length > 0 ? funcionario.celular : "Não informado" }}</b>
                                         </div>
                                     </span>
                                 </div>
@@ -103,9 +107,9 @@ export default {
         buscar() {
             this.$http.get(ENV['api.buscar-funcionario'], {
                 params: { 
-                    'nome': this.nome.trim(),
+                    'nome': (this.nome) ? this.nome.trim(): '',
                     'secretaria': this.secretaria,
-                    'titulo': this.titulo.trim()
+                    'titulo': (this.titulo) ? this.titulo.trim() : ''
                 }
             }).then((result) => {
                 this.funcionarios = result.data
