@@ -1,28 +1,28 @@
 <template>
     <layout-servicos :voltar="true">
         <span class="busca-funcionarios">
-            <h2 class="text-xs-center" style="color: #555">
+            <h2 class="text-xs-center mb-2" style="color: #555">
                 Localize com facilidade seus colegas de trabalho, pesquisando por nome, secretaria ou cargo.
             </h2>
 
             <v-layout row wrap>
-                <v-flex lg6 md6 sm6 xs12>
+                <v-flex lg5 md5 sm4 xs12>
                     <v-text-field @keyup.enter="buscar" v-model="nome" placeholder="Digite o nome do funcionário" flat solo clearable append-icon="person"></v-text-field>
                 </v-flex>
-                <v-flex lg3 md3 sm3 xs6>
+                <v-flex lg2 md2 sm3 xs6>
                     <v-autocomplete @keyup.enter="buscar" v-model="secretaria" :items="secretarias" solo flat placeholder="Secretaria" clearable></v-autocomplete>
                 </v-flex>
                 <v-flex lg3 md3 sm3 xs6>
                     <v-autocomplete @keyup.enter="buscar" v-model="titulo" item-value="valor" item-text="descricao" :items="titulos" solo flat placeholder="Cargo" clearable></v-autocomplete>
                 </v-flex>
-                <v-flex lg12 md12 sm12 xs12>
-                    <v-btn @click="buscar" color="teal" large block dark><v-icon right>search</v-icon> Buscar</v-btn>
+                <v-flex lg2 md2 sm2 xs12 mb-2>
+                    <v-btn class="mt-0" @click="buscar" color="teal" large block dark><v-icon right>search</v-icon> Buscar</v-btn>
                 </v-flex>
             </v-layout>
 
             <v-layout row wrap>
                 <v-flex>
-                    <v-alert class="mb-10" :value="funcionarios.length == 300" type="info"> A busca é limitada em 300 resultados, por favor seja mais específico. </v-alert>
+                    <v-alert class="mb-10" :value="funcionarios.length == 300" type="info" outline> A busca é limitada em 300 resultados, por favor seja mais específico. </v-alert>
                 </v-flex>
             </v-layout>
 
@@ -78,6 +78,10 @@
                     </v-card>
                 </v-expansion-panel-content>
             </v-expansion-panel>
+
+            <v-alert :value="nenhumResultado" outline type="info">
+                A busca não retornou nenhum resultado
+            </v-alert>
         </span>
     </layout-servicos>
 </template>
@@ -92,6 +96,7 @@ export default {
             secretaria: '',
             titulo : '',
             funcionarios: [],
+            nenhumResultado: false,
             titulos: [
                 { descricao: 'Secretario', valor: 'S' },
                 { descricao: 'Diretor', valor: 'D' },
@@ -113,6 +118,7 @@ export default {
                 }
             }).then((result) => {
                 this.funcionarios = result.data
+                this.nenhumResultado = this.funcionarios.length == 0
             })
         }
     }

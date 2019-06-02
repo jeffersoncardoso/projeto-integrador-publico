@@ -1,6 +1,6 @@
 <template>
   <layout-servicos :voltar="true">
-    <v-alert outline type="info" :value="true">Atualize seus dados cadastrais</v-alert>
+    <v-alert outline type="info" :value="true">Atualize seus dados cadastrais regularmente</v-alert>
 
     <v-layout row wrap>
       <v-flex>
@@ -26,6 +26,18 @@
         <label for="setor">Setor</label>
         <v-text-field solo flat v-model="usuario.setor"></v-text-field>
       </v-flex>
+      <v-flex md2>
+        <label for="celular">Celular</label>
+        <v-text-field :mask="'(##) #####-####'"  solo flat v-model="usuario.celular"></v-text-field>
+      </v-flex>
+      <v-flex md2>
+        <label for="telefone">Telefone</label>
+        <v-text-field :mask="'(##) ####-####'" solo flat v-model="usuario.telefone"></v-text-field>
+      </v-flex>
+      <v-flex md1>
+        <label for="ramal">Ramal</label>
+        <v-text-field :mask="'####'" solo flat v-model="usuario.ramal"></v-text-field>
+      </v-flex>
     </v-layout>
 
     <v-layout row wrap>
@@ -40,21 +52,6 @@
       <v-flex md2>
         <label for="cep">CEP</label>
         <v-text-field :mask="'#####-###'" solo flat v-model="usuario.cep"></v-text-field>
-      </v-flex>
-    </v-layout>
-
-    <v-layout row wrap>
-      <v-flex>
-        <label for="celular">Celular</label>
-        <v-text-field :mask="'(##) #####-####'"  solo flat v-model="usuario.celular"></v-text-field>
-      </v-flex>
-      <v-flex md4>
-        <label for="telefone">Telefone</label>
-        <v-text-field :mask="'(##) ####-####'" solo flat v-model="usuario.telefone"></v-text-field>
-      </v-flex>
-      <v-flex md2>
-        <label for="ramal">Ramal</label>
-        <v-text-field :mask="'####'" solo flat v-model="usuario.ramal"></v-text-field>
       </v-flex>
     </v-layout>
 

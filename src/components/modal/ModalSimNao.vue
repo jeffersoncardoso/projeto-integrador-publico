@@ -3,8 +3,8 @@
     <slot></slot>
     <template v-slot:actions>
       <v-spacer></v-spacer>
-      <v-btn color="green darken-1" flat="flat" @click="nao()"> NÃO </v-btn>
-      <v-btn color="green darken-1" flat="flat" @click="sim()"> SIM </v-btn>
+      <v-btn color="accent" flat="flat" @click="nao()"> NÃO </v-btn>
+      <v-btn color="accent" flat="flat" @click="sim()"> SIM </v-btn>
     </template>
   </Modal>
 </template>

@@ -1,11 +1,9 @@
 <template>
-    <v-app style="background:#FFF">
+    <v-app class="white">
         <Logo/>
-
-        <v-progress-linear v-if="isLoading" height="7" style="margin: 0px" color="green" :indeterminate="true"></v-progress-linear>
-        <v-progress-linear v-else height="7" style="margin: 0px" color="light" :indeterminate="false"></v-progress-linear>
+        <Loading/>
         
-        <v-content class="layout-login">
+        <v-content class="base pb-4">
             <v-container grid-list-md>
                 <slot></slot>
             </v-container>
@@ -14,18 +12,17 @@
         <Footer/>
     </v-app>
 </template>
+
 <script>
 import Logo from './Logo'
+import Loading from './Loading'
 
 export default {
     components: {
-        Logo
+        Logo, Loading
     }
 }
 </script>
 
 <style>
-    .layout-login {
-        background: #F5F5F5 !important;
-    }
 </style>

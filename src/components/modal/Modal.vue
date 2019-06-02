@@ -1,10 +1,9 @@
 <template>
     <modal :name="name" :width="largura" :maxWidth="1000" height="auto" :scrollable="true" :adaptive="true">
         <v-card min-height="100%">
-            <v-card-title class="headline teal" style="color: #FFF">
+            <v-card-title class="headline primary white--text">
                 <slot name="title">{{ title }}</slot>
                 <v-spacer></v-spacer>
-
                 <button icon flat @click="close()"><v-icon color="white">close</v-icon></button>
             </v-card-title>
 

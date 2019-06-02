@@ -1,8 +1,7 @@
 <template>
     <v-app light>
         <Header/>
-        <v-progress-linear v-if="isLoading" height="7" style="margin: 0px" color="green" :indeterminate="true"></v-progress-linear>
-        <v-progress-linear v-else height="7" style="margin: 0px" color="light" :indeterminate="false"></v-progress-linear>
+        <Loading/>
 
         <v-content>
             <v-container grid-list-md>
@@ -17,10 +16,11 @@
 <script>
 import Header from './Header'
 import Footer from './Footer'
+import Loading from './Loading'
 
 export default {
     components: {
-        Header, Footer
+        Header, Footer, Loading
     }
 }
 </script>

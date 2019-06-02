@@ -1,12 +1,14 @@
 <template>
   <layout-login>
     <div class="login text-xs-center">
+      <h2 class="accent--text">Serviços e sistemas integrados em um só lugar</h2>
+      <h3 class="accent--text pt-3">Faça o login</h3>
       <v-layout justify-center>
         <v-flex md6 xs12>
-            <v-text-field solo flat v-model="usuario" label="Digite usuário de rede" required></v-text-field>
+            <v-text-field solo flat v-model="usuario" label="Digite seu usuário" required></v-text-field>
             <v-text-field solo flat v-model="senha" type="password" label="Digite sua senha" required @keyup.enter="login()"></v-text-field>
 
-            <v-btn @click="login" color="info">Entrar</v-btn>
+            <v-btn @click="login" color="primary">Entrar</v-btn>
         </v-flex>
       </v-layout>
 

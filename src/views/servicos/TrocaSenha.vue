@@ -22,19 +22,19 @@
       <ul>
         <div>
           Caracteres maiúsculos (A-Z)
-          <v-icon v-if="possuiMaiusculos(this.nova)" style="color: green !important;">check</v-icon>
+          <v-icon v-if="possuiMaiusculos(this.nova)" class="primary--text">check</v-icon>
         </div>
         <div>
           Caracteres minúsculos (a-z)
-          <v-icon v-if="possuiMinusculos(this.nova)" style="color: green !important;">check</v-icon>
+          <v-icon v-if="possuiMinusculos(this.nova)" class="primary--text">check</v-icon>
         </div>
         <div>
           Dígitos numéricos (0-9)
-          <v-icon v-if="possuiNumeros(this.nova)" style="color: green !important;">check</v-icon>
+          <v-icon v-if="possuiNumeros(this.nova)" class="primary--text">check</v-icon>
         </div>
         <div>
           Caracteres especiais (por exemplo, @, !, $, #, %)
-          <v-icon v-if="possuiCaracteresEspeciais(this.nova)" style="color: green !important;">check</v-icon>
+          <v-icon v-if="possuiCaracteresEspeciais(this.nova)" class="primary--text">check</v-icon>
         </div>
       </ul>
     </v-alert>
@@ -69,6 +69,9 @@ export default {
 
     },
     verificarSenha() {
+      if(this.senha.length == 0) 
+        return;
+        
       this.$http.post(ENV['api.login'], {
         'username' : this.usuario.login,
         'password': this.senha

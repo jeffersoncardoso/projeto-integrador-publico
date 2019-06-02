@@ -1,11 +1,9 @@
 <template>
-    <v-app style="background:#FFF">
+    <v-app class="white">
         <Logo/>
-
-        <v-progress-linear v-if="isLoading" height="7" style="margin: 0px" color="green" :indeterminate="true"></v-progress-linear>
-        <v-progress-linear v-else height="7" style="margin: 0px" color="light" :indeterminate="false"></v-progress-linear>
+        <Loading/>
         
-        <v-content class="layout-servicos">
+        <v-content class="base pb-4">
             <v-container grid-list-md>
                 <slot></slot>
             </v-container>
@@ -28,6 +26,7 @@
 <script>
 import Footer from './Footer'
 import Logo from './Logo'
+import Loading from './Loading'
 
 export default {
     props: {
@@ -41,32 +40,18 @@ export default {
         }
     },
     components: {
-        Logo, Footer
+        Logo, Footer, Loading
     }
 }
 </script>
 
 <style>
-    .layout-servicos {
-        background: #F5F5F5 !important;
-        padding-bottom: 35px !important;
-    }
-
-
     .fixed-bottom-left {
         position: fixed;
         bottom: 0;
         width: 100%;
         display: flex;
         margin-bottom: 25px;
-        justify-content: center;
+        justify-content: left;
     }
-
-    @media (max-width: 600px) 
-    {
-        .fixed-bottom-left {
-            justify-content: left;
-        }
-    }
-    
 </style>

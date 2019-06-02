@@ -24,7 +24,7 @@
 
 <script>
 import { ENV } from "../../env.js"
-import ModalAviso from '../../components/ModalAviso'
+import ModalAviso from '../../components/modal/ModalAviso'
 
 var moment = require('moment');
 

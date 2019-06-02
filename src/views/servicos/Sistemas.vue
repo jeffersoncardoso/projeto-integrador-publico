@@ -18,7 +18,7 @@
 
 <script>
 
-import ModalSistema from '../../components/ModalSistema'
+import ModalSistema from '../../components/modal/ModalSistema'
 import { ENV } from "../../env.js"
 
 export default {

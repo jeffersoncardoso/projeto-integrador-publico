@@ -18,7 +18,7 @@
 
 <script>
 
-import ModalUtilitario from '../../components/ModalUtilitario'
+import ModalUtilitario from '../../components/modal/ModalUtilitario'
 import { ENV } from "../../env.js"
 
 export default {

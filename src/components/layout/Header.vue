@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar color="teal" dark>
+    <v-toolbar color="primary" flat dark>
       <v-toolbar-title>
         <v-btn flat :to="{name: 'servicos'}">Serviços</v-btn>
       </v-toolbar-title>
