@@ -31,15 +31,7 @@ Vue.component('card-utilitario', CardUtilitario)
 Vue.use(Toasted)
 Vue.use(VModal)
 Vue.use(VeeValidate, { inject: false });
-Vue.prototype.$http = axios;
-
-Vue.mixin({
-  data: function() {
-    return {
-      isLoading: false
-    }
-  }
-})
+Vue.prototype.$http = axios
 
 axios.interceptors.response.use(function (response) {
   return response;
@@ -47,27 +39,6 @@ axios.interceptors.response.use(function (response) {
   // Vue.toasted.show(error.message, { position: 'bottom-center', duration: 2000 })
   return Promise.reject(error);
 });
-
-Vue.mixin({
-  data(){
-    return {
-      isLoading: false
-    }
-  },
-  created(){
-    this.$http.interceptors.request.use((config) => { 
-      this.isLoading = true
-      return config
-    }, (error) => {  return Promise.reject(error)  })
-    this.$http.interceptors.response.use((response) => {
-      this.isLoading = false
-      return response
-    }, (error) => { 
-      this.isLoading = false
-      return Promise.reject(error) 
-    })
-  }
-})
 
 Vue.config.productionTip = false
 

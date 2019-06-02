@@ -33,12 +33,9 @@ export default {
     mostrar(utilitario) {
       this.utilitarioSelecionado = utilitario
       this.$modal.show("utilitario")
-    },
-    getNomeUsuario() {
-      return localStorage.getItem("nome");
     }
   },
-  created() {
+  mounted() {
     this.$http.get(ENV['api.utilitario']).then((response) => { this.utilitarios = response.data })
   },
   computed: {

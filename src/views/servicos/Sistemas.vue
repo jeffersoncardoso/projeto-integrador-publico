@@ -7,7 +7,7 @@
 
       <v-layout row wrap>
         <v-flex md2 sm4 xs4 v-for="sistema in filterSistemas" :key="sistema.id" d-flex>
-          <card-sistema :sistema="sistema" @mostrar="mostrar(sistema)"></card-sistema>
+          <card-sistema :sistema="sistema" @abrir="abrir(sistema)" @ajuda="ajuda(sistema)"></card-sistema>
         </v-flex>
       </v-layout>
 
@@ -31,7 +31,10 @@ export default {
     }
   },
   methods: {
-    mostrar(sistema) {
+    abrir(sistema) {
+      window.open(sistema.producao, '_blank')
+    },
+    ajuda(sistema) {
       this.sistemaSelecionado = sistema
       this.$modal.show("sistema")
     },
@@ -39,7 +42,7 @@ export default {
       return localStorage.getItem("nome");
     }
   },
-  created() {
+  mounted() {
     this.$http.get(ENV['api.sistema']).then((response) => { 
       this.sistemas = response.data
     })

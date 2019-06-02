@@ -37,7 +37,7 @@ export default {
       recebeNotificacao: false
     }
   },
-  created() {
+  mounted() {
     this.$http.get(ENV['api.aviso']).then((response) => {
       this.avisos = response.data
     })

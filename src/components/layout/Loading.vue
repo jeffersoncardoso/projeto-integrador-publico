@@ -5,7 +5,25 @@
 
 <script>
 export default {
-    
+    data(){
+        return {
+            isLoading: false
+        }
+    },
+    created() {
+        this.$http.interceptors.request.use((config) => { 
+            this.isLoading = true
+            return config
+        }, (error) => {  return Promise.reject(error)  })
+
+        this.$http.interceptors.response.use((response) => {
+          this.isLoading = false
+          return response
+        }, (error) => { 
+          this.isLoading = false
+          return Promise.reject(error) 
+        })
+    }
 }
 </script>
 
