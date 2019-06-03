@@ -23,6 +23,7 @@ export default {
         { nome: 'Mural de avisos', icone: 'info', link: '/mural-avisos' },
         { nome: 'Meus dados', icone: 'account_circle', link: '/meus-dados' },
         { nome: 'Troca de senha', icone: 'vpn_key', link: '/troca-senha' },
+        { nome: 'Links úteis', icone: 'open_in_new', link: '/links-uteis' },
         { nome: 'Atendimento Canoastec', icone: 'computer', link: '/atendimento'},
         { nome: 'RH 24 Horas', icone: 'people', link: '/rh24h'},
         { nome: 'Memorandos', icone: 'email', link: '/memorandos'},

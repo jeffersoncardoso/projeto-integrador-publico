@@ -43,7 +43,7 @@ export default {
       if(this.name == null || this.name.length == 0) return this.utilitarios;
 
       return this.utilitarios.filter((utilitario) => {
-        return utilitario.name.toUpperCase().includes(this.name.toUpperCase());
+        return utilitario.nome.toUpperCase().includes(this.name.toUpperCase());
       })
     }
   },
