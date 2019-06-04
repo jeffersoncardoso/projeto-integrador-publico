@@ -9,10 +9,12 @@ import MuralAvisos from './views/servicos/MuralAvisos.vue'
 import Utilitarios from './views/servicos/Utilitarios.vue'
 import BuscaFuncionarios from './views/servicos/BuscaFuncionarios.vue'
 import MeusDados from './views/servicos/MeusDados.vue'
+import LinksUteis from './views/servicos/LinksUteis.vue'
 import Rh24h from './views/servicos/externo/rh24h.vue'
 import Atendimento from './views/servicos/externo/atendimento.vue'
 import Memorandos from './views/servicos/externo/memorandos.vue'
 import DiarioOficial from './views/servicos/externo/diario-oficial.vue'
+import Telefones from './views/servicos/Telefones.vue'
 
 import { default as Admin } from './views/admin/Admin.vue'
 import { default as AdminFormSistemas } from './views/admin/sistemas/Formulario.vue'
@@ -38,6 +40,8 @@ const router = new Router({
     { path: '/sistemas', name: 'sistemas', component: Sistemas },
     { path: '/utilitarios', name: 'utilitarios', component: Utilitarios },
     { path: '/meus-dados', name: 'meus-dados', component: MeusDados },
+    { path: '/links-uteis', name: 'links-uteis', component: LinksUteis },
+    { path: '/telefones', name: 'telefones', component: Telefones },
     { path: '/rh24h', name: 'rh24h', component: Rh24h },
     { path: '/atendimento', name: 'atendimento', component: Atendimento },
     { path: '/memorandos', name: 'memorandos', component: Memorandos },
