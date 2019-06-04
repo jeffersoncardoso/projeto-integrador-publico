@@ -1,11 +1,10 @@
 <template>
     <div class="layout-servicos-header">
         <v-layout row wrap align-center>
-            <v-flex md1></v-flex>
             <v-flex hidden-xs-only md2 class="layout-servicos-logo text-xs-center">
                 <img width="130" alt="Prefeitura de Canoas" src="../../assets/brasao-canoas.png">
             </v-flex>
-            <v-flex md2>
+            <v-flex md2 ml-1>
                 <h2 class="text-xs-center accent--text"><router-link style="text-decoration:none;" to="/">Portal de Serviços</router-link></h2>
             </v-flex>
             <v-flex v-if="['login'].indexOf($route.name) == -1" class="text-xs-right" md7>
