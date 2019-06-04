@@ -8,7 +8,7 @@
             <v-flex md2>
                 <h2 class="text-xs-center accent--text"><router-link style="text-decoration:none;" to="/">Portal de Serviços</router-link></h2>
             </v-flex>
-            <v-flex class="text-xs-right" md7>
+            <v-flex v-if="['login'].indexOf($route.name) == -1" class="text-xs-right" md7>
                 <v-btn title="Sair" @click="sair()" flat icon color="teal">
                     <v-icon medium>power_settings_new</v-icon>
                 </v-btn>
