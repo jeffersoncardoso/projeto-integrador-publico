@@ -29,7 +29,7 @@
           <vue-editor v-model="aviso.descricao"></vue-editor>
 
           <div class="text-xs-right">
-          <v-btn @click="save()" color="success">Salvar Aviso</v-btn>
+            <v-btn @click="save()" color="success">Salvar Aviso</v-btn>
           </div>
       </v-form>
     </layout-admin>

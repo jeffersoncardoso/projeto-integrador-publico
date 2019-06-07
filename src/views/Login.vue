@@ -36,7 +36,7 @@ export default {
         'username' : this.usuario,
         'password': this.senha
       }, {
-        headers: { Authorization: ENV['apikey'] }
+        // headers: { Authorization: ENV['apikey'] }
       }).then((response) => {
         
         sessionStorage.setItem("usuario", JSON.stringify(response.data.user));
@@ -45,7 +45,7 @@ export default {
 
       }).catch((error) => {
         
-        if(error.response.status == 422) {
+        if(error.response.status == 422 || error.response.status == 403 ) {
           this.$toasted.show(error.response.data.error, { position: 'bottom-center', duration: 2000 })
         }
         
