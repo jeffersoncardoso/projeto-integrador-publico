@@ -1,8 +1,8 @@
 export const ENV = {
     'api' : 'https://portalservicos.jeffersoncardoso.info/api',
-    'api.login' : 'https://sistemas.canoas.rs.gov.br/ldap-api/login',
-    'api.cadastro' : 'https://sistemas.canoas.rs.gov.br/ldap-api/{login}/atualizar-cadastro',
-    'api.senha' : 'https://sistemas.canoas.rs.gov.br/ldap-api/{login}/trocar-senha',
+    'api.login' : 'https://portalservicos.jeffersoncardoso.info/api/login',
+    'api.cadastro' : 'https://portalservicos.jeffersoncardoso.info/api/{login}/atualizar-cadastro?token=jBVJJWlc2wWWGcAye0GdsIdHFnqcv6pB',
+    'api.senha' : 'https://portalservicos.jeffersoncardoso.info/api/{login}/trocar-senha?token=jBVJJWlc2wWWGcAye0GdsIdHFnqcv6pB',
     'api.aviso' : 'https://portalservicos.jeffersoncardoso.info/api/aviso/',
     'api.perfil' : 'https://portalservicos.jeffersoncardoso.info/api/perfil/',
     'api.usuario' : 'https://portalservicos.jeffersoncardoso.info/api/usuario/',

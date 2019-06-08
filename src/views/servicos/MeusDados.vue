@@ -81,7 +81,7 @@ export default {
         telefone: this.usuario.telefone,
         ramal: this.usuario.ramal
       }, {
-        headers: { Authorization: ENV['apikey'] }
+        // headers: { Authorization: ENV['apikey'] }
       }).then((response) => {
         this.usuario = response.data.user
         sessionStorage.setItem("usuario", JSON.stringify(this.usuario))

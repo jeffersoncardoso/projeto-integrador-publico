@@ -2,11 +2,11 @@
     <v-card flat class="card-sistema">
         <v-card-text class="card-sistema-text px-1 pt-0 text-xs-center">
             <div class="text-xs-right">
-                <v-icon @click="$emit('ajuda')" class="card-sistema-ajuda" small>help</v-icon>
+                <v-icon title="Saiba mais" @click="$emit('ajuda')" class="card-sistema-ajuda" small>help</v-icon>
             </div>
             <div>
-                <v-icon @click="$emit('abrir')" class="card-sistema-icone" large>{{ sistema.icone }}</v-icon>
-                <h4 @click="$emit('abrir')" class="card-sistema-nome">{{ sistema.nome_abreviado }}</h4>
+                <v-icon :title="'Acesse ' + sistema.nome_abreviado" @click="$emit('abrir')" class="card-sistema-icone" large>{{ sistema.icone }}</v-icon>
+                <h4 :title="'Acesse ' + sistema.nome_abreviado" @click="$emit('abrir')" class="card-sistema-nome">{{ sistema.nome_abreviado }}</h4>
             </div>
         </v-card-text>
     </v-card>

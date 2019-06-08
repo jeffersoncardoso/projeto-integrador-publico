@@ -76,7 +76,7 @@ export default {
         'username' : this.usuario.login,
         'password': this.senha
       }, {
-        headers: { Authorization: ENV['apikey'] }
+        // headers: { Authorization: ENV['apikey'] }
       }).then(result => {
         this.erroSenha = []
       }).catch((error) => {
@@ -115,7 +115,7 @@ export default {
         old: this.senha,
         new: this.nova
       }, {
-        headers: { Authorization: ENV['apikey'] }
+        // headers: { Authorization: ENV['apikey'] }
       }).then(result => {
         if(result.data.success) {
           this.$toasted.show("Senha alterada com sucesso", { position: 'bottom-center', duration: 2000 })
