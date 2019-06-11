@@ -85,6 +85,8 @@ export default {
       }).then((response) => {
         this.usuario = response.data.user
         sessionStorage.setItem("usuario", JSON.stringify(this.usuario))
+
+        this.$toasted.show("Cadastro atualizado com sucesso", { position: 'bottom-center', duration: 2000 })
       })
     }
   },
