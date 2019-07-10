@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { ENV } from "../../env.js"
 import ModalAviso from '../../components/modal/ModalAviso'
 
 var moment = require('moment');
@@ -38,7 +37,7 @@ export default {
     }
   },
   mounted() {
-    this.$http.get(ENV['api.aviso']).then((response) => {
+    this.$http.get(process.env.VUE_APP_API_AVISO).then((response) => {
       this.avisos = response.data
     })
   },
@@ -61,7 +60,7 @@ export default {
           this.recebeNotificacao = true;
           this.$toasted.show("Pronto para receber notificações", { duration: 3000, position: 'bottom-center' })
         })
-        
+
       }).catch((err) => {
         this.$toasted.show('Unable to get permission to notify: ' + err.message)
       });

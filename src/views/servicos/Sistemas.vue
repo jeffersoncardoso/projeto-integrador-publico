@@ -19,7 +19,6 @@
 <script>
 
 import ModalSistema from '../../components/modal/ModalSistema'
-import { ENV } from "../../env.js"
 
 export default {
   name: 'sistemas',
@@ -43,7 +42,7 @@ export default {
     }
   },
   mounted() {
-    this.$http.get(ENV['api.sistema']).then((response) => { 
+    this.$http.get(process.env.VUE_APP_API_SISTEMA).then((response) => {
       this.sistemas = response.data
     })
   },

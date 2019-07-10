@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <project name="servicos" default="zip" basedir="." xmlns:if="ant:if" xmlns:unless="ant:unless">
     <property environment="env"/>
+    <property file="./build.properties" />
 
-    <target name="zip">
+    <target name="env-clean">
+        <delete file=".env" />
+    </target>
+
+    <target name="env-create" depends="env-clean">
+        <echo>Creating .env </echo>
+        <exec executable="/bin/bash" output=".env" failonerror="true">
+            <arg value="generateEnvironment.sh" />
+            <arg value="${api}" />
+            <arg value="${api-login}" />
+            <arg value="${api-cadastro}" />
+            <arg value="${api-senha}" />
+            <arg value="${api-aviso}" />
+            <arg value="${api-sistema}" />
+            <arg value="${api-utilitario}" />
+            <arg value="${api-buscar-funcionario}" />
+            <arg value="${api-resetar-senha}" />
+        </exec>
+    </target>
+
+    <target name="build" depends="env-create">
+        <echo>Installing dependencies and building project for publication</echo>
+        <exec executable="/bin/bash" failonerror="true">
+            <arg value="build.sh" />
+        </exec>
+    </target>
+
+    <target name="zip" depends="build">
         <defaultexcludes default="true"/>
         <zip destfile="bin/servicos.zip" basedir="./dist" />
     </target>

@@ -42,40 +42,6 @@ axios.interceptors.response.use(function (response) {
 
 Vue.config.productionTip = false
 
-
-var firebase = require("firebase/app");
-require("firebase/messaging");
-
-try {
-  var config = {
-    apiKey: "AIzaSyDJuNPUNA12NKyosaMlyI52Tn23gQFl3SA",
-    authDomain: "projeto-integrador-6962f.firebaseapp.com",
-    databaseURL: "https://projeto-integrador-6962f.firebaseio.com",
-    projectId: "projeto-integrador-6962f",
-    storageBucket: "projeto-integrador-6962f.appspot.com",
-    messagingSenderId: "593639466370"
-  };
-  firebase.initializeApp(config);
-  
-  firebase.messaging().onMessage((payload) => {
-    
-    Vue.toasted.show(payload.notification.title, {
-      position: 'bottom-center', 
-      action : {
-        text : 'Abrir',
-        onClick : (e, toastObject) => { window.open(payload.notification.click_action, '_blank'); }
-      },
-      duration: 10000
-    })
-  })
-  Vue.prototype.$messaging = firebase.messaging();
-    
-} catch (error) {
-  Vue.toasted.show("Esse navegador não suporta notificações", { 
-    position: 'bottom-center', duration: 2000
-  })
-}
-
 let vue = new Vue({
   router,
   render: h => h(App)

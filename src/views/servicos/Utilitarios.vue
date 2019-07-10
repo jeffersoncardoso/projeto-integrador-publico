@@ -19,7 +19,6 @@
 <script>
 
 import ModalUtilitario from '../../components/modal/ModalUtilitario'
-import { ENV } from "../../env.js"
 
 export default {
   data: () => {
@@ -36,7 +35,7 @@ export default {
     }
   },
   mounted() {
-    this.$http.get(ENV['api.utilitario']).then((response) => { this.utilitarios = response.data })
+    this.$http.get(process.env.VUE_APP_API_UTILITARIO).then((response) => { this.utilitarios = response.data })
   },
   computed: {
     filterUtilitarios() {

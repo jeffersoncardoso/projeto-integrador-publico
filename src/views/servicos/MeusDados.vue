@@ -63,7 +63,6 @@
 </template>
 
 <script>
-import { ENV } from "../../env.js"
 
 export default {
   created() {
@@ -71,7 +70,7 @@ export default {
   },
   methods: {
     atualizarCadastro(){
-      let url = ENV['api.cadastro'].replace("{login}", this.usuario.login)
+      let url = process.env.VUE_APP_API_CADASTRO.replace("{login}", this.usuario.login)
       this.$http.post(url, {
         setor: this.usuario.setor,
         endereco: this.usuario.endereco,
@@ -80,8 +79,6 @@ export default {
         celular: this.usuario.celular,
         telefone: this.usuario.telefone,
         ramal: this.usuario.ramal
-      }, {
-        // headers: { Authorization: ENV['apikey'] }
       }).then((response) => {
         this.usuario = response.data.user
         sessionStorage.setItem("usuario", JSON.stringify(this.usuario))

@@ -33,7 +33,7 @@
                             <v-flex lg9 md9 sm9 xs12>
                                 <div>
                                     <h3 class="text-uppercase">
-                                        {{ funcionario.nome }} 
+                                        {{ funcionario.nome }}
                                     </h3>
                                     <h4 class="text-uppercase">
                                         {{ (funcionario.secretaria) ? funcionario.secretaria : "" }}
@@ -87,7 +87,6 @@
 </template>
 
 <script>
-import { ENV } from "../../env.js"
 
 export default {
     data() {
@@ -110,8 +109,8 @@ export default {
     },
     methods: {
         buscar() {
-            this.$http.get(ENV['api.buscar-funcionario'], {
-                params: { 
+            this.$http.get(process.env.VUE_APP_API_BUSCAR_FUNCIONARIO, {
+                params: {
                     'nome': (this.nome) ? this.nome.trim(): '',
                     'secretaria': this.secretaria,
                     'titulo': (this.titulo) ? this.titulo.trim() : ''

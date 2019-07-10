@@ -1,13 +1,13 @@
 <template>
   <layout-servicos :voltar="true">
     <v-alert outline :value="true" type="info" > Troque aqui a sua senha de rede, que é a mesma senha utilizada para entrar no seu computador, email e para acessar os sistemas. </v-alert>
-    
+
     <v-layout row wrap>
       <v-flex>
         <v-password :error-messages="erroSenha" @blur="verificarSenha()" v-model="senha" label="Digite sua senha atual" hint="Pelo menos 8 caracteres" counter></v-password>
       </v-flex>
     </v-layout>
-    
+
     <v-layout row wrap>
       <v-flex md6 sm6>
         <v-password v-model="nova" label="Nova senha" hint="Pelo menos 8 caracteres" counter></v-password>
@@ -17,7 +17,7 @@
       </v-flex>
     </v-layout>
 
-    <v-alert outline :value="true" type="info"> 
+    <v-alert outline :value="true" type="info">
       A senha deve ter no mínimo 8 caracteres e cumprir três das quatro categorias a seguir:
       <ul>
         <div>
@@ -47,8 +47,6 @@
 </template>
 
 <script>
-import { ENV } from "../../env.js"
-
 export default {
   created() {
     this.usuario = JSON.parse(sessionStorage.getItem("usuario"))
@@ -56,7 +54,7 @@ export default {
   data() {
     return {
       usuario: {},
-      
+
       senha: '',
       erroSenha: [],
 
@@ -69,14 +67,12 @@ export default {
 
     },
     verificarSenha() {
-      if(this.senha.length == 0) 
+      if(this.senha.length == 0)
         return;
-        
-      this.$http.post(ENV['api.login'], {
+
+      this.$http.post(process.env.VUE_APP_API_LOGIN, {
         'username' : this.usuario.login,
         'password': this.senha
-      }, {
-        // headers: { Authorization: ENV['apikey'] }
       }).then(result => {
         this.erroSenha = []
       }).catch((error) => {
@@ -109,13 +105,11 @@ export default {
       return categorias < 3 || this.nova.length < 8 || this.nova != this.repetir;
     },
     trocarSenha() {
-      let url = ENV['api.senha'].replace("{login}", this.usuario.login)
+      let url = process.env.VUE_APP_API_SENHA.replace("{login}", this.usuario.login)
 
       this.$http.post(url, {
         old: this.senha,
         new: this.nova
-      }, {
-        // headers: { Authorization: ENV['apikey'] }
       }).then(result => {
         if(result.data.success) {
           this.$toasted.show("Senha alterada com sucesso", { position: 'bottom-center', duration: 2000 })

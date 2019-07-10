@@ -28,7 +28,7 @@ export default {
         { nome: 'RH 24 Horas', icone: 'people', link: '/rh24h'},
         { nome: 'Memorandos', icone: 'email', link: '/memorandos'},
         { nome: 'Diário oficial', icone: 'description', link: '/diario-oficial'},
-        { nome: 'Telefones', icone: 'settings_phone', link: '/telefones'},
+        { nome: 'Ligações', icone: 'settings_phone', link: '/telefones'},
       ]
     }
   },
