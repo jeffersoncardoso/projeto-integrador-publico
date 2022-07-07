@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "eslint": "^5.16.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "register-service-worker": "^1.6.2",
     "tiptap": "^1.14.0",
     "vee-validate": "^2.2.2",
